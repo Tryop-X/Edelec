@@ -2,6 +2,6 @@ package Edelec;
 
 public class Main(){
 	public static void main(String[] args){
-		system.out.println("Ctmr");
+		system.out.println("kjajajaj");
 	}
 }
