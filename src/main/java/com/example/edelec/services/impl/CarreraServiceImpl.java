@@ -4,18 +4,6 @@ import com.example.edelec.repositories.CarreraRepository;
 import org.springframework.stereotype.Service;
 import com.example.edelec.services.CarreraService;
 
-<<<<<<< HEAD
-@Service
-public class CarreraServiceImpl implements CarreraService{
-
-    private CarreraRepository carreraRepository;
-
-
-
-    @Override
-    public Carrera createsCarrera(Carrera carrera) {
-        return carreraRepository.save(carrera);
-=======
 import java.util.List;
 import java.util.Optional;
 
@@ -64,6 +52,5 @@ public class CarreraServiceImpl implements CarreraService{
         Carrera carrerafromDb=carreraRepository.findById(IdCarrera)
                 .orElseThrow(RuntimeException::new);
         carreraRepository.delete(carrerafromDb);
->>>>>>> a12fa5675f3614a4d4f59a67db95bd404f6016c3
     }
 }

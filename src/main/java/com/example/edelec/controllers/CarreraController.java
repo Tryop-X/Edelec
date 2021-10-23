@@ -5,23 +5,6 @@ import com.example.edelec.entitys.Carrera;
 import com.example.edelec.services.CarreraService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-<<<<<<< HEAD
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
-@RestController
-@RequestMapping("/pacientes")
-
-public class CarreraController {
-
- private CarreraService carreraService;
-    @PostMapping
-    public ResponseEntity<Carrera> createCarrera(@RequestBody Carrera carrera){
-        Carrera carreraNew=carreraService.createsCarrera(carrera);
-        return new ResponseEntity<>(carreraNew, HttpStatus.CREATED);
-=======
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -67,6 +50,5 @@ public class CarreraController {
     public ResponseEntity<Void> deleteCarrera(@PathVariable Long IdCarrera) {
         carreraService.deleteCarrera(IdCarrera);
         return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
->>>>>>> a12fa5675f3614a4d4f59a67db95bd404f6016c3
     }
 }
