@@ -1,4 +1,4 @@
-package Edelec.Entitys;
+package Edelec.entitys;
 
 
 import lombok.AllArgsConstructor;
