@@ -4,7 +4,10 @@ import com.example.edelec.entitys.Carrera;
 import java.util.List;
 
 public interface CarreraService {
-    Carrera createsCarrera(Carrera carrera);
-    /*List<Carrera>*/
+   Carrera createCarrera(Carrera carrera);
+    List<Carrera> getAllCarrera();
+    Carrera getCarreraById(Long IdCarrera);
 
+   Carrera updateCarrera(Carrera carrera);
+    void deleteCarrera(Long restaurantId);
 }
