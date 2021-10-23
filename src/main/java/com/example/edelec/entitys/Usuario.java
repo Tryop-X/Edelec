@@ -3,23 +3,32 @@ package com.example.edelec.entitys;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import javax.validation.constraints.Size;
 
-@AllArgsConstructor
-@NoArgsConstructor
+
 @Entity
 @Table(name = "Usuario")
 public class Usuario {
     @Id
-    @Column(name = "id", nullable = false)
-    private Long id;
-    String nombredeUsuario;
-    String apellido;
-    String correo;
-    String contraseña;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long idUsuario;
+
+    @Size()
+    @Column(name = "nombre", nullable = false)
+    private String nombredeUsuario;
+
+
+    @Column(name = "Apellido", nullable = false)
+    private String apellido;
+
+
+    @Column(name = "Correo", nullable = false)
+    private String correo;
+
+
+    @Column(name = "contraseña", nullable = false)
+    private String contraseña;
 
     public String getNombredeUsuario() {
         return nombredeUsuario;
@@ -51,13 +60,5 @@ public class Usuario {
 
     public void setContraseña(String contraseña) {
         this.contraseña = contraseña;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 }

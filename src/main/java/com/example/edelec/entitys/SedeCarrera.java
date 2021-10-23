@@ -1,19 +1,14 @@
 package com.example.edelec.entitys;
 
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 
-
-@AllArgsConstructor
-@NoArgsConstructor
 @Entity
-public class SedeCarrera extends Carrera {
+@Table(name = "SedeCarrera")
+
+public class SedeCarrera{
     @Id
-    @Column(name = "id", nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     String mallasUniversitarias;//Noes string es una imagen
     float precio;

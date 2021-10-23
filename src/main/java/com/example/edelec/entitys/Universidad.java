@@ -4,24 +4,17 @@ package com.example.edelec.entitys;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.data.annotation.Id;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-
-@AllArgsConstructor
-@NoArgsConstructor
 @Entity
-@Data
 @Table(name = "Universidad")
 public class Universidad {
-
-    @javax.persistence.Id
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer idUniversidad;
+    private Long IdUniversidad;
 
     @NotNull
     @Size(min = 10 , max = 50 , message = "El nombre es muy pqueño")
@@ -58,5 +51,9 @@ public class Universidad {
 
     public void setImage(String image) {
         this.image = image;
+    }
+
+    public Long getId() {
+        return IdUniversidad;
     }
 }

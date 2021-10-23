@@ -1,21 +1,32 @@
 package com.example.edelec.entitys;
 
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
+import lombok.Data;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
-@AllArgsConstructor
-@NoArgsConstructor
+
+
 @Entity
 @Table(name = "Comentario")
 
+
 public class Comentario {
     @Id
-    @Column(name = "comentario_id", nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long comentarioId;
-    Date tiempo;
-    String contenido;
+
+    @DateTimeFormat(pattern = "yyyy-MM-dd hh:mm")
+    @Column(name = "Fecha", nullable = false)
+    private Date tiempo;
+
+    @NotBlank
+    @Size(min = 1, message = "Este mensaje esta vacio")
+    @Column(name = "contenido", nullable = false)
+    private String contenido;
 
     public void setComentarioId(Long comentarioId) {
         this.comentarioId = comentarioId;

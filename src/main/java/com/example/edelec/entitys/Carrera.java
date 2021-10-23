@@ -1,28 +1,31 @@
 package com.example.edelec.entitys;
 
 
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
-
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 
-@AllArgsConstructor
-@NoArgsConstructor
+
 @Entity
 @Table(name = "Carrera")
+
 public class Carrera {
     @Id
-    @Column(name = "carid", nullable = false)
-    private Long carId;
-    String nombreCarrera;
-    String descripcionUniversidad;
-    int tasadeEmpleabilidad;
-    float salarioPromedio;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer IdCarrera;
 
 
-    public void setCarId(Long carid) {
-        this.carId = carid;
-    }
+    @Column(name = "nombre", nullable = false , unique = true)
+    private String nombreCarrera;
+
+    @Size(min = 10)
+    @Column(name = "descripcion", nullable = false, unique = true)
+    private String descripcionDeCarrera;
+
+    @Column(name = "tasaDeEmpleabilidad", nullable = false)
+    private int tasadeEmpleabilidad;
+
+    @Column(name = "salarioPromedio", nullable = false)
+    private float salarioPromedio;
 
     public String getNombreCarrera() {
         return nombreCarrera;
@@ -33,11 +36,11 @@ public class Carrera {
     }
 
     public String getDescripcionUniversidad() {
-        return descripcionUniversidad;
+        return descripcionDeCarrera;
     }
 
     public void setDescripcionUniversidad(String descripcionUniversidad) {
-        this.descripcionUniversidad = descripcionUniversidad;
+        this.descripcionDeCarrera = descripcionUniversidad;
     }
 
     public int getTasadeEmpleabilidad() {
@@ -56,8 +59,8 @@ public class Carrera {
         this.salarioPromedio = salarioPromedio;
     }
 
-    public Long getCarId() {
-        return carId;
+    public int getCarId() {
+        return IdCarrera;
     }
 
 }
