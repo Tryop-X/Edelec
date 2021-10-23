@@ -1,5 +1,5 @@
 package Edelec.services.impl;
-import Edelec.entitys.Carrera;
+import com.example.edelec.entitys.Carrera;
 import Edelec.repositories.CarreraRepository;
 import org.springframework.stereotype.Service;
 import Edelec.services.CarreraService;

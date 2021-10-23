@@ -1,7 +1,7 @@
 package Edelec.controllers;
 
 
-import Edelec.entitys.Carrera;
+import com.example.edelec.entitys.Carrera;
 import Edelec.services.CarreraService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

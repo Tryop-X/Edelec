@@ -1,5 +1,5 @@
 package Edelec.services;
-import Edelec.entitys.Carrera;
+import com.example.edelec.entitys.Carrera;
 
 public interface CarreraService {
     Carrera createsCarrera(Carrera carrera);

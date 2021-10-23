@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class EdelecApplication {
+public class EdelecApplicationBackend {
 
     public static void main(String[] args) {
-        SpringApplication.run(EdelecApplication.class, args);
+        SpringApplication.run(EdelecApplicationBackend.class, args);
     }
 
 }
