@@ -2,6 +2,7 @@ package com.example.edelec.entitys;
 
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 
@@ -14,13 +15,16 @@ public class Carrera {
     private Integer IdCarrera;
 
 
+    @NotNull
     @Column(name = "nombre", nullable = false , unique = true)
     private String nombreCarrera;
 
+    @NotNull
     @Size(min = 10)
     @Column(name = "descripcion", nullable = false, unique = true)
     private String descripcionDeCarrera;
 
+    @NotNull
     @Column(name = "tasaDeEmpleabilidad", nullable = false)
     private int tasadeEmpleabilidad;
 

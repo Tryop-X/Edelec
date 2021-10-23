@@ -1,10 +1,7 @@
 package com.example.edelec.entitys;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 
@@ -17,18 +14,26 @@ public class Sede {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idSede;
 
+    @NotNull
     @Size(min = 5, max = 20, message = "Ciudad no valido")
     @Column(name = "Dsitrito", nullable = false)
     private Long Dsitrito;
 
-
+    @NotNull
     @Size(min = 5, max = 20, message = "Ciudad no valido")
     @Column(name = "Ciudad", nullable = false)
     private String ciudad;
 
-    @Size(min = 5, max = 20, message = "Ciudad no valido")
-    @Column(name = "Distrtito", nullable = false)
-    private String distrito;
+    @NotNull
+    @Size(min = 5, max = 20, message = "Departamento no valido")
+    @Column(name = "Departamento", nullable = false)
+    private String Departamento;
+
+    @ManyToOne
+    @JoinColumn(name = "id_universidad",nullable = false,  foreignKey = @ForeignKey(name = "FK_Sede_Universidad"))
+    private Universidad universidad;
+
+
 
     public Long getDsitrito() {
         return Dsitrito;
@@ -46,16 +51,12 @@ public class Sede {
         this.ciudad = ciudad;
     }
 
-    public String getDistrito() {
-        return distrito;
+
+    public String getDepartamento() {
+        return Departamento;
     }
 
-    public void setDistrito(String distrito) {
-        this.distrito = distrito;
+    public void setDepartamento(String departamento) {
+        Departamento = departamento;
     }
-
-    public Long getIdSede() {
-        return idSede;
-    }
-
 }

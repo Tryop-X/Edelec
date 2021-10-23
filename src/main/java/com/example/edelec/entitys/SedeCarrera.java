@@ -4,14 +4,20 @@ package com.example.edelec.entitys;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "SedeCarrera")
+@Table(name = "Sede_Carrera")
+@IdClass(SedeCarreraPK.class)
 
 public class SedeCarrera{
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    String mallasUniversitarias;//Noes string es una imagen
-    float precio;
+    private Sede idSede;
+
+    @Id
+    private Carrera IdCarrera;
+
+    @Column(name = "Malla", nullable = true)
+    private String mallasUniversitarias;//Noes string es una imagen
+    @Column(name = "precio", nullable = false)
+    private float precio;
 
 
 
@@ -29,10 +35,6 @@ public class SedeCarrera{
 
     public void setPrecio(float precio) {
         this.precio = precio;
-    }
-
-    public Long getId() {
-        return id;
     }
 
 

@@ -1,17 +1,15 @@
 package com.example.edelec.entitys;
 
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.util.List;
 
 @Entity
 @Table(name = "Universidad")
 public class Universidad {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long IdUniversidad;
@@ -20,13 +18,21 @@ public class Universidad {
     @Size(min = 10 , max = 50 , message = "El nombre es muy pqueño")
     @Column(name = "Univerdidad", nullable = false, length = 20, unique = true)
     private String Name;
-
-    @Size(min = 20 , max = 200)
+    @NotNull
+    @Size(min = 20)
     @Column(name = "descripción", nullable = true, length = 20, unique = true)
     private String description;
 
     @Column(name = "imagen", nullable = true)
     private String image;
+
+
+    @OneToMany(mappedBy = "universidad",cascade ={CascadeType.ALL})
+    private List<Sede> sede;
+
+    @OneToMany(mappedBy = "universidad",cascade ={CascadeType.ALL})
+    private List<Comentario> coments;
+
 
 
     public String getName() {
@@ -53,7 +59,4 @@ public class Universidad {
         this.image = image;
     }
 
-    public Long getId() {
-        return IdUniversidad;
-    }
 }

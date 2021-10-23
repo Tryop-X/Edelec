@@ -4,7 +4,10 @@ import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.util.List;
 
 
 @Entity
@@ -14,28 +17,35 @@ public class Usuario {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idUsuario;
 
-    @Size()
+    @NotNull
+    @Size(min = 6, max = 30, message = "Nombre no valido")
     @Column(name = "nombre", nullable = false)
-    private String nombredeUsuario;
+    private String nombre;
 
-
+    @NotNull
+    @Size(min = 6, max = 30, message = "Nombre no valido")
     @Column(name = "Apellido", nullable = false)
     private String apellido;
 
-
+    @NotNull
+    @Email
     @Column(name = "Correo", nullable = false)
     private String correo;
 
-
+    @NotNull
+    @Size(min = 8,max = 16, message = "Contraseña no valida")
     @Column(name = "contraseña", nullable = false)
     private String contraseña;
 
-    public String getNombredeUsuario() {
-        return nombredeUsuario;
+    @OneToMany(mappedBy = "User",cascade ={CascadeType.ALL})
+    private List<Comentario> coment;
+
+    public String getNombre() {
+        return nombre;
     }
 
     public void setNombredeUsuario(String nombredeUsuario) {
-        this.nombredeUsuario = nombredeUsuario;
+        this.nombre = nombredeUsuario;
     }
 
     public String getApellido() {
