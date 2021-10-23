@@ -1,5 +1,7 @@
 package com.example.edelec.services;
 
-public interface UniversidadService {
+import com.example.edelec.entitys.Universidad;
 
+public interface UniversidadService {
+    Universidad createUniversity(Universidad universidad);
 }
