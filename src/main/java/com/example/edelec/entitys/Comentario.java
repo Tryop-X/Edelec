@@ -13,7 +13,7 @@ import javax.validation.constraints.Size;
 
 
 @Entity
-@Table(name = "Comentario")
+@Table(name = "comentarios")
 
 
 public class Comentario {

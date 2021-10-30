@@ -12,7 +12,7 @@ import java.util.List;
 
 
 @RestController
-@RequestMapping("/Carrera")
+@RequestMapping("/carrera")
 
 public class CarreraController {
 
@@ -24,8 +24,8 @@ public class CarreraController {
 
     @PostMapping
     public ResponseEntity<Carrera> createCarrera(@Valid @RequestBody Carrera carrera) {
-       Carrera carreraa =carreraService.createCarrera(carrera);
-        return new ResponseEntity<>(carreraa, HttpStatus.CREATED);
+       Carrera carreraNew =carreraService.createCarrera(carrera);
+        return  new ResponseEntity<Carrera>(carreraNew, HttpStatus.CREATED);
     }
 
     @GetMapping
@@ -35,19 +35,19 @@ public class CarreraController {
     }
 
     @GetMapping("/{carreraId}")
-    public ResponseEntity<Carrera> getCarreraById(@PathVariable Long IdCarrera) {
+    public ResponseEntity<Carrera> getCarreraById(@PathVariable("carreraId") Integer IdCarrera) {
         Carrera carrera =carreraService.getCarreraById(IdCarrera);
         return new ResponseEntity<>(carrera, HttpStatus.OK);
     }
 
     @PutMapping
     public ResponseEntity<Carrera> updateCarrera(@RequestBody Carrera carrera) {
-        Carrera carrera1 =carreraService.updateCarrera(carrera);
-        return new ResponseEntity<>(carrera1, HttpStatus.OK);
+        Carrera carreraActulizar =carreraService.updateCarrera(carrera);
+        return new ResponseEntity<>(carreraActulizar, HttpStatus.OK);
     }
 
     @DeleteMapping("/{carreraId}")
-    public ResponseEntity<Void> deleteCarrera(@PathVariable Long IdCarrera) {
+    public ResponseEntity<Void> deleteCarrera(@PathVariable("carreraId") Integer IdCarrera) {
         carreraService.deleteCarrera(IdCarrera);
         return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
     }

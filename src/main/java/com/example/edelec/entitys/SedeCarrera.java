@@ -4,7 +4,7 @@ package com.example.edelec.entitys;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "Sede_Carrera")
+@Table(name = "sedes_carreras")
 @IdClass(SedeCarreraPK.class)
 
 public class SedeCarrera{

@@ -16,10 +16,11 @@ public class CarreraServiceImpl implements CarreraService{
         this.carreraRepository = carreraRepository;
     }
 
-@Override
+    @Override
     public Carrera createCarrera(Carrera carrera) {
         return carreraRepository.save(carrera);
     }
+
     @Override
     public List<Carrera> getAllCarrera() {
         return carreraRepository.findAll();
@@ -27,9 +28,8 @@ public class CarreraServiceImpl implements CarreraService{
 
 
     @Override
-    public Carrera getCarreraById (Long IdCarrera) {
-        Optional<Carrera> carreraFromDb=carreraRepository.findById(IdCarrera);
-        return carreraFromDb.orElseThrow(RuntimeException::new);
+    public Carrera getCarreraById (Integer IdCarrera) {
+        return carreraRepository.findById(IdCarrera).orElse(new Carrera());
     }
 
 
@@ -37,20 +37,20 @@ public class CarreraServiceImpl implements CarreraService{
 
     @Override
     public Carrera updateCarrera(Carrera carrera) {
-        Carrera carreraFromDb=carreraRepository.findById(carrera.getIdCarrera())
-                .orElse(new Carrera());
+        return carreraRepository.save(carrera);
+    }
+        /*
+        Carrera carreraFromDb=carreraRepository.findById(Long.valueOf(carrera.getIdCarrera())).orElse(new Carrera());
         carreraFromDb.setNombreCarrera(carrera.getNombreCarrera());
         carreraFromDb.setDescripcionUniversidad(carrera.getDescripcionUniversidad());
         carreraFromDb.setSalarioPromedio(carrera.getSalarioPromedio());
-        carreraFromDb.setTasadeEmpleabilidad(carrera.getTasadeEmpleabilidad());
+        carreraFromDb.setTasaDeEmpleabilidad(carrera.getTasaDeEmpleabilidad());
         return carreraRepository.save(carreraFromDb);
-    }
+    }*/
 
 
     @Override
-    public void deleteCarrera(Long IdCarrera) {
-        Carrera carrerafromDb=carreraRepository.findById(IdCarrera)
-                .orElseThrow(RuntimeException::new);
-        carreraRepository.delete(carrerafromDb);
+    public void deleteCarrera(Integer IdCarrera) {
+        carreraRepository.deleteById(IdCarrera);
     }
 }

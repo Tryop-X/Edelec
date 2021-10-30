@@ -9,7 +9,7 @@ import org.springframework.data.repository.query.Param;
 import java.util.List;
 
 @Repository
-public interface CarreraRepository extends JpaRepository<Carrera, Long> {
+public interface CarreraRepository extends JpaRepository<Carrera, Integer> {
 
     @Query("FROM  Carrera u WHERE u.nombreCarrera=:nombre")
     List<Carrera> buscarCarrera(@Param("nombre") String nombreCarrera);
@@ -20,6 +20,6 @@ public interface CarreraRepository extends JpaRepository<Carrera, Long> {
     @Query("FROM  Carrera u WHERE u.salarioPromedio=:name")
     List<Carrera> buscarCarreraporSalario(@Param("name") String name);
 
-    @Query("FROM Carrera u WHERE u.tasadeEmpleabilidad=:name")
+    @Query("FROM Carrera u WHERE u.tasaDeEmpleabilidad=:name")
     List<Carrera> BuscarPorTasa(@Param("name") String name);
 }
