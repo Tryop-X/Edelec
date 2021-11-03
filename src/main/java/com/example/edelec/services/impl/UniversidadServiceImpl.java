@@ -1,12 +1,56 @@
 package com.example.edelec.services.impl;
 
 import com.example.edelec.entitys.Universidad;
+import com.example.edelec.repositories.UniversidadRepository;
 import com.example.edelec.services.UniversidadService;
+import org.springframework.stereotype.Service;
 
+import java.util.List;
+
+@Service
 public class UniversidadServiceImpl implements UniversidadService {
 
+    private final UniversidadRepository universidadRepository;
 
-    public Universidad createUniversity(Universidad universidad){
-        return null;
+    public UniversidadServiceImpl(UniversidadRepository universidadRepository) {
+        this.universidadRepository = universidadRepository;
+    }
+
+
+
+    @Override
+    public Universidad createUniversidad(Universidad universidad){
+        return universidadRepository.save(universidad);
+    }
+
+    @Override
+    public List<Universidad> getAllUniversidad() {
+        return universidadRepository.findAll();
+    }
+
+    @Override
+    public Universidad getUniversidadByname(String name){
+        return  universidadRepository.buscarUniversidad(name);
+    }
+
+    @Override
+    public List<Object> getUniversidadByDsitrito(String distrito){
+        return universidadRepository.buscarPorDistrito(distrito);
+    }
+
+    @Override
+    public List<Object> getUniversidadByCiudad(String ciudad){
+        return universidadRepository.buscarPorCiudad(ciudad);
+    }
+
+    @Override
+    public Universidad updateUniversidad(Universidad universidad){
+        return universidadRepository.save(universidad);
+    }
+
+    @Override
+    public void deleteUniversidad(String name){
+        Integer id =universidadRepository.buscarUniversidad(name).getIdUniversidad();
+        universidadRepository.deleteById(id);
     }
 }

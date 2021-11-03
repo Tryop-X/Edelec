@@ -12,9 +12,12 @@ public class CarreraServiceImpl implements CarreraService{
 
     private final CarreraRepository carreraRepository;
 
+
     public CarreraServiceImpl(CarreraRepository carreraRepository) {
         this.carreraRepository = carreraRepository;
     }
+
+
 
     @Override
     public Carrera createCarrera(Carrera carrera) {
@@ -34,19 +37,10 @@ public class CarreraServiceImpl implements CarreraService{
 
 
 
-
     @Override
     public Carrera updateCarrera(Carrera carrera) {
         return carreraRepository.save(carrera);
     }
-        /*
-        Carrera carreraFromDb=carreraRepository.findById(Long.valueOf(carrera.getIdCarrera())).orElse(new Carrera());
-        carreraFromDb.setNombreCarrera(carrera.getNombreCarrera());
-        carreraFromDb.setDescripcionUniversidad(carrera.getDescripcionUniversidad());
-        carreraFromDb.setSalarioPromedio(carrera.getSalarioPromedio());
-        carreraFromDb.setTasaDeEmpleabilidad(carrera.getTasaDeEmpleabilidad());
-        return carreraRepository.save(carreraFromDb);
-    }*/
 
 
     @Override
