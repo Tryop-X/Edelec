@@ -6,10 +6,10 @@ import java.io.Serializable;
 
 public class SedeCarreraPK implements Serializable {
     @ManyToOne
-    @JoinColumn(name="id_Sede", nullable = false)
+    @JoinColumn(name="idSede", nullable = false)
     private Sede idSede;
 
     @ManyToOne
-    @JoinColumn(name="id_Carrera", nullable = false)
-    private Carrera IdCarrera;
+    @JoinColumn(name="idCarrera", nullable = false)
+    private Carrera idCarrera;
 }

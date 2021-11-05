@@ -16,28 +16,20 @@ import java.time.LocalDateTime;
 public class Perfil {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long perfilId;
+    private Integer idPerfil;
 
     @NotNull
     @DateTimeFormat(pattern = "yyyy-MM-dd hh:mm")
-    @Column(name = "Fecha", nullable = false)
+    @Column(name = "fechas", nullable = false)
     private LocalDateTime fecha;
 
     @NotNull
     @Size(min = 20)
-    @Column(name = "descripción", nullable = true, length = 20, unique = true)
+    @Column(name = "descripciónes", nullable = true, length = 20, unique = true)
     private String descripcion;
 
+    @OneToOne
+    @JoinColumn(name = "usuarios", foreignKey = @ForeignKey(name = "FK_Usuario_Perfil"))
+    private Usuario usuario;
 
-    public LocalDateTime getFecha() {
-        return fecha;
-    }
-
-    public String getDescripcion() {
-        return descripcion;
-    }
-
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
-    }
 }

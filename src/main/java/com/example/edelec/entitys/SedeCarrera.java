@@ -16,14 +16,30 @@ public class SedeCarrera{
     private Sede idSede;
 
     @Id
-    private Carrera IdCarrera;
+    private Carrera idCarrera;
 
-    @Column(name = "Malla", nullable = true)
+    @Column(name = "mallas", nullable = true)
     private String mallasUniversitarias;//Noes string es una imagen
-    @Column(name = "precio", nullable = false)
+
+    @Column(name = "precios", nullable = false)
     private float precio;
 
 
+    public Sede getIdSede() {
+        return idSede;
+    }
+
+    public void setIdSede(Sede idSede) {
+        this.idSede = idSede;
+    }
+
+    public Carrera getIdCarrera() {
+        return idCarrera;
+    }
+
+    public void setIdCarrera(Carrera idCarrera) {
+        this.idCarrera = idCarrera;
+    }
 
     public String getMallasUniversitarias() {
         return mallasUniversitarias;
@@ -40,8 +56,4 @@ public class SedeCarrera{
     public void setPrecio(float precio) {
         this.precio = precio;
     }
-
-
-
-
 }

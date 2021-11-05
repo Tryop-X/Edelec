@@ -17,7 +17,7 @@ public class Universidad {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer IdUniversidad;
+    private Integer idUniversidad;
 
     @NotNull
     @Size(min = 10 , max = 50 , message = "El nombre es muy pqueño")
@@ -38,8 +38,13 @@ public class Universidad {
     @OneToMany(mappedBy = "universidad",cascade ={CascadeType.ALL})
     private List<Comentario> coments;
 
+
     public Integer getIdUniversidad() {
-        return IdUniversidad;
+        return idUniversidad;
+    }
+
+    public void setIdUniversidad(Integer idUniversidad) {
+        this.idUniversidad = idUniversidad;
     }
 
     public String getName() {

@@ -17,35 +17,41 @@ import javax.validation.constraints.Size;
 public class Sede {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idSede;
+    private Integer idSede;
 
     @NotNull
     @Size(min = 5, max = 20, message = "Ciudad no valido")
-    @Column(name = "Dsitrito", nullable = false)
-    private Long Dsitrito;
+    @Column(name = "distritos", nullable = false)
+    private Long distrito;
 
     @NotNull
     @Size(min = 5, max = 20, message = "Ciudad no valido")
-    @Column(name = "Ciudad", nullable = false)
+    @Column(name = "ciudades", nullable = false)
     private String ciudad;
 
     @NotNull
     @Size(min = 5, max = 20, message = "Departamento no valido")
-    @Column(name = "Departamento", nullable = false)
-    private String Departamento;
+    @Column(name = "departamentos", nullable = false)
+    private String departamento;
 
     @ManyToOne
-    @JoinColumn(name = "id_universidad",nullable = false,  foreignKey = @ForeignKey(name = "FK_Sede_Universidad"))
+    @JoinColumn(name = "idUniversidad",nullable = false,  foreignKey = @ForeignKey(name = "FK_Sede_Universidad"))
     private Universidad universidad;
 
-
-
-    public Long getDsitrito() {
-        return Dsitrito;
+    public Integer getIdSede() {
+        return idSede;
     }
 
-    public void setDsitrito(Long dsitrito) {
-        Dsitrito = dsitrito;
+    public void setIdSede(Integer idSede) {
+        this.idSede = idSede;
+    }
+
+    public Long getDistrito() {
+        return distrito;
+    }
+
+    public void setDistrito(Long distrito) {
+        this.distrito = distrito;
     }
 
     public String getCiudad() {
@@ -56,12 +62,19 @@ public class Sede {
         this.ciudad = ciudad;
     }
 
-
     public String getDepartamento() {
-        return Departamento;
+        return departamento;
     }
 
     public void setDepartamento(String departamento) {
-        Departamento = departamento;
+        this.departamento = departamento;
+    }
+
+    public Universidad getUniversidad() {
+        return universidad;
+    }
+
+    public void setUniversidad(Universidad universidad) {
+        this.universidad = universidad;
     }
 }

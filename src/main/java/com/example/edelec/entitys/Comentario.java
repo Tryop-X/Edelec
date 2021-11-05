@@ -22,29 +22,33 @@ import javax.validation.constraints.Size;
 public class Comentario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long comentarioId;
+    private Integer idComentario;
 
     @NotNull
     @DateTimeFormat(pattern = "yyyy-MM-dd hh:mm")
-    @Column(name = "Fecha", nullable = false)
+    @Column(name = "Fechas", nullable = false)
     private LocalDateTime tiempo;
 
     @NotNull
     @NotBlank
     @Size(min = 1, message = "Este mensaje esta vacio")
-    @Column(name = "contenido", nullable = false)
+    @Column(name = "contenidos", nullable = false)
     private String contenido;
 
     @ManyToOne
-    @JoinColumn(name = "id_usuario",nullable = false,  foreignKey = @ForeignKey(name = "FK_Usuario_Comentario"))
-    private Usuario User;
+    @JoinColumn(name = "idUsuarios",nullable = false,  foreignKey = @ForeignKey(name = "FK_Usuario_Comentario"))
+    private Usuario user;
 
     @ManyToOne
-    @JoinColumn(name = "id_universidad",nullable = false,  foreignKey = @ForeignKey(name = "FK_Universidada_Comentario"))
+    @JoinColumn(name = "idUniversidades",nullable = false,  foreignKey = @ForeignKey(name = "FK_Universidada_Comentario"))
     private Universidad universidad;
 
-    public void setComentarioId(Long comentarioId) {
-        this.comentarioId = comentarioId;
+    public Integer getIdComentario() {
+        return idComentario;
+    }
+
+    public void setIdComentario(Integer idComentario) {
+        this.idComentario = idComentario;
     }
 
     public LocalDateTime getTiempo() {
@@ -63,9 +67,19 @@ public class Comentario {
         this.contenido = contenido;
     }
 
-    public Long getComentarioId() {
-        return comentarioId;
+    public Usuario getUser() {
+        return user;
     }
 
+    public void setUser(Usuario user) {
+        this.user = user;
+    }
 
+    public Universidad getUniversidad() {
+        return universidad;
+    }
+
+    public void setUniversidad(Universidad universidad) {
+        this.universidad = universidad;
+    }
 }

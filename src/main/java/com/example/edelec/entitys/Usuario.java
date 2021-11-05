@@ -20,7 +20,7 @@ import javax.persistence.Table;
 public class Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idUsuario;
+    private Integer idUsuario;
 
     @NotNull
     @Size(min = 6, max = 30, message = "Nombre no valido")
@@ -45,12 +45,32 @@ public class Usuario {
     @OneToMany(mappedBy = "User",cascade ={CascadeType.ALL})
     private List<Comentario> coment;
 
+    @OneToOne(mappedBy = "usuario", cascade = CascadeType.ALL)
+    private Perfil perfil;
+
+
+    public Integer getIdUsuario() {
+        return idUsuario;
+    }
+
+    public void setIdUsuario(Integer idUsuario) {
+        this.idUsuario = idUsuario;
+    }
+
+    public Perfil getPerfil() {
+        return perfil;
+    }
+
+    public void setPerfil(Perfil perfil) {
+        this.perfil = perfil;
+    }
+
     public String getNombre() {
         return nombre;
     }
 
-    public void setNombredeUsuario(String nombredeUsuario) {
-        this.nombre = nombredeUsuario;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
     public String getApellido() {
@@ -77,6 +97,11 @@ public class Usuario {
         this.contraseña = contraseña;
     }
 
+    public List<Comentario> getComent() {
+        return coment;
+    }
 
-
+    public void setComent(List<Comentario> coment) {
+        this.coment = coment;
+    }
 }
