@@ -20,7 +20,7 @@ import javax.persistence.Table;
 public class Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idUsuario;
+    private Integer idUsuario;
 
     @NotNull
     @Size(min = 6, max = 30, message = "Nombre no valido")
@@ -78,5 +78,11 @@ public class Usuario {
     }
 
 
+    public Integer getIdUsuario() {
+        return idUsuario;
+    }
 
+    public void setIdUsuario(Integer idUsuario) {
+        this.idUsuario = idUsuario;
+    }
 }
