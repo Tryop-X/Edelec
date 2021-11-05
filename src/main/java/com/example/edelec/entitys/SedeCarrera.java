@@ -1,12 +1,16 @@
 package com.example.edelec.entitys;
 
 
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.*;
 
 @Entity
 @Table(name = "sedes_carreras")
 @IdClass(SedeCarreraPK.class)
-
+@NoArgsConstructor
+@AllArgsConstructor
 public class SedeCarrera{
     @Id
     private Sede idSede;

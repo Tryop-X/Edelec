@@ -1,5 +1,8 @@
 package com.example.edelec.entitys;
 
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
@@ -12,6 +15,8 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "usuarios")
+@NoArgsConstructor
+@AllArgsConstructor
 public class Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

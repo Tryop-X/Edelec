@@ -12,5 +12,4 @@ public class UniversidadController {
         this.universidadService = universidadService;
     }
 
-
 }

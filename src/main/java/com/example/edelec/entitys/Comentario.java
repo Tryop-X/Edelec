@@ -1,6 +1,8 @@
 package com.example.edelec.entitys;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDateTime;
@@ -14,7 +16,8 @@ import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "comentarios")
-
+@NoArgsConstructor
+@AllArgsConstructor
 
 public class Comentario {
     @Id

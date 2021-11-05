@@ -1,5 +1,8 @@
 package com.example.edelec.entitys;
 
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -8,6 +11,8 @@ import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "sedes")
+@NoArgsConstructor
+@AllArgsConstructor
 
 public class Sede {
     @Id
