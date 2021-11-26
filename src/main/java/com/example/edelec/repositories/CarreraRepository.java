@@ -11,15 +11,15 @@ import java.util.List;
 @Repository
 public interface CarreraRepository extends JpaRepository<Carrera, Integer> {
 
-    @Query("FROM  Carrera u WHERE u.nombreCarrera=:nombre")
+    @Query("Select c FROM  Carrera c WHERE c.nombreCarrera=:nombre")
     List<Carrera> buscarCarrera(@Param("nombre") String nombreCarrera);
 
-    @Query("FROM Carrera u WHERE u.descripcionDeCarrera=:name")
+    @Query("Select c FROM Carrera c WHERE c.descripcionDeCarrera=:name")
     List<Carrera> BuscarDescripcionCarrera(@Param("name") String name);
 
-    @Query("FROM  Carrera u WHERE u.salarioPromedio=:name")
+    @Query("Select c FROM Carrera c WHERE c.salarioPromedio=:name")
     List<Carrera> buscarCarreraporSalario(@Param("name") String name);
 
-    @Query("FROM Carrera u WHERE u.tasaDeEmpleabilidad=:name")
+    @Query("Select c FROM Carrera c WHERE c.tasaDeEmpleabilidad=:name")
     List<Carrera> BuscarPorTasa(@Param("name") String name);
 }
