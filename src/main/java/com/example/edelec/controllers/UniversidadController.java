@@ -12,4 +12,12 @@ public class UniversidadController {
         this.universidadService = universidadService;
     }
 
+    public void getUniversidadById() {
+
+    }
+
+    public void updateUniversity() {
+
+    }
+
 }

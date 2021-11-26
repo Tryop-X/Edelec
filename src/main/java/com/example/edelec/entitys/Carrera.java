@@ -2,7 +2,9 @@ package com.example.edelec.entitys;
 
 
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -13,6 +15,8 @@ import javax.validation.constraints.Size;
 @Table(name = "carreras")
 @NoArgsConstructor
 @AllArgsConstructor
+@Getter
+@Setter
 
 public class Carrera {
     @Id
@@ -37,45 +41,4 @@ public class Carrera {
     @NotNull
     @Column(name = "salarioPromedio", nullable = false)
     private Integer salarioPromedio;
-
-
-    public Integer getIdCarrera() {
-        return IdCarrera;
-    }
-
-    public void setIdCarrera(Integer idCarrera) {
-        IdCarrera = idCarrera;
-    }
-
-    public String getNombreCarrera() {
-        return nombreCarrera;
-    }
-
-    public void setNombreCarrera(String nombreCarrera) {
-        this.nombreCarrera = nombreCarrera;
-    }
-
-    public String getDescripcionDeCarrera() {
-        return descripcionDeCarrera;
-    }
-
-    public void setDescripcionDeCarrera(String descripcionDeCarrera) {
-        this.descripcionDeCarrera = descripcionDeCarrera;
-    }
-
-    public Float getTasaDeEmpleabilidad() {
-        return tasaDeEmpleabilidad;
-    }
-
-    public void setTasaDeEmpleabilidad(Float tasaDeEmpleabilidad) {
-        this.tasaDeEmpleabilidad = tasaDeEmpleabilidad;
-    }
-
-    public Integer getSalarioPromedio() {
-        return salarioPromedio;
-    }
-
-    public void setSalarioPromedio(Integer salarioPromedio) {
-        this.salarioPromedio = salarioPromedio;
-    }
 }
