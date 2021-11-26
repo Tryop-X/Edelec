@@ -2,9 +2,13 @@ package com.example.edelec.entitys;
 
 
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "sedes_carreras")
@@ -14,8 +18,8 @@ import javax.persistence.*;
 public class SedeCarrera{
     @Id
     private Sede idSede;
-
     @Id
+
     private Carrera idCarrera;
 
     @Column(name = "mallas", nullable = true)
