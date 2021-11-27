@@ -1,7 +1,9 @@
 package com.example.edelec.entitys;
 
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -20,6 +22,8 @@ import javax.persistence.Table;
 @Table(name = "usuarios")
 @NoArgsConstructor
 @AllArgsConstructor
+@Getter
+@Setter
 public class Usuario implements UserDetails {
 
     @Id
@@ -53,61 +57,6 @@ public class Usuario implements UserDetails {
     private Perfil perfil;
 
 
-    public Integer getIdUsuario() {
-        return idUsuario;
-    }
-
-    public void setIdUsuario(Integer idUsuario) {
-        this.idUsuario = idUsuario;
-    }
-
-    public Perfil getPerfil() {
-        return perfil;
-    }
-
-    public void setPerfil(Perfil perfil) {
-        this.perfil = perfil;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public String getApellido() {
-        return apellido;
-    }
-
-    public void setApellido(String apellido) {
-        this.apellido = apellido;
-    }
-
-    public String getCorreo() {
-        return correo;
-    }
-
-    public void setCorreo(String correo) {
-        this.correo = correo;
-    }
-
-    public String getContraseña() {
-        return contraseña;
-    }
-
-    public void setContraseña(String contraseña) {
-        this.contraseña = contraseña;
-    }
-
-    public List<Comentario> getComent() {
-        return coment;
-    }
-
-    public void setComent(List<Comentario> coment) {
-        this.coment = coment;
-    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -143,4 +92,5 @@ public class Usuario implements UserDetails {
     public boolean isEnabled() {
         return false;
     }
+
 }

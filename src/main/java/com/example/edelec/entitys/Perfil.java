@@ -1,7 +1,9 @@
 package com.example.edelec.entitys;
 
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -13,6 +15,8 @@ import java.time.LocalDateTime;
 @Table(name = "perfiles")
 @NoArgsConstructor
 @AllArgsConstructor
+@Getter
+@Setter
 public class Perfil {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

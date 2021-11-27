@@ -15,6 +15,8 @@ import javax.validation.constraints.Size;
 @Table(name = "sedes")
 @NoArgsConstructor
 @AllArgsConstructor
+@Getter
+@Setter
 
 public class Sede {
     @Id
@@ -24,68 +26,18 @@ public class Sede {
     @NotNull
     @Size(min = 5, max = 20, message = "Ciudad no valido")
 
-    @Column(name = "distritos", nullable = false)
-    private Long distrito;
+    @Column(name = "ubicaciones", nullable = false)
+    private Long  ubicion;
 
     @NotNull
     @Size(min = 5, max = 20, message = "Ciudad no valido")
-    @Column(name = "ciudades", nullable = false)
-    private String ciudad;
-
-    @NotNull
-    @Size(min = 5, max = 20, message = "Departamento no valido")
-    @Column(name = "departamentos", nullable = false)
-    private String departamento;
-
-    @NotNull
-    @Size(min = 5, max = 20, message = "Departamento no valido")
-    @Column(name = "Departamento", nullable = false)
-    private String Direccion;
+    @Column(name = "direcciones", nullable = false)
+    private String direccion;
 
 
     @ManyToOne
     @JoinColumn(name = "idUniversidad",nullable = false,  foreignKey = @ForeignKey(name = "FK_Sede_Universidad"))
     private Universidad universidad;
 
-
-    public Integer getIdSede() {
-        return idSede;
-    }
-
-    public void setIdSede(Integer idSede) {
-        this.idSede = idSede;
-    }
-
-    public Long getDistrito() {
-        return distrito;
-    }
-
-    public void setDistrito(Long distrito) {
-        this.distrito = distrito;
-    }
-
-    public String getCiudad() {
-        return ciudad;
-    }
-
-    public void setCiudad(String ciudad) {
-        this.ciudad = ciudad;
-    }
-
-    public String getDepartamento() {
-        return departamento;
-    }
-
-    public void setDepartamento(String departamento) {
-        this.departamento = departamento;
-    }
-
-    public Universidad getUniversidad() {
-        return universidad;
-    }
-
-    public void setUniversidad(Universidad universidad) {
-        this.universidad = universidad;
-    }
 
 }

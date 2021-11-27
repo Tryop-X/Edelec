@@ -41,45 +41,4 @@ public class Carrera {
     @NotNull
     @Column(name = "salariosPromedios", nullable = false)
     private Integer salarioPromedio;
-
-
-    public Integer getidCarrera() {
-        return idCarrera;
-    }
-
-    public void setIdCarrera(Integer idCarrera) {
-        idCarrera = idCarrera;
-    }
-
-    public String getNombreCarrera() {
-        return nombreCarrera;
-    }
-
-    public void setNombreCarrera(String nombreCarrera) {
-        this.nombreCarrera = nombreCarrera;
-    }
-
-    public String getDescripcionDeCarrera() {
-        return descripcionDeCarrera;
-    }
-
-    public void setDescripcionDeCarrera(String descripcionDeCarrera) {
-        this.descripcionDeCarrera = descripcionDeCarrera;
-    }
-
-    public Float getTasaDeEmpleabilidad() {
-        return tasaDeEmpleabilidad;
-    }
-
-    public void setTasaDeEmpleabilidad(Float tasaDeEmpleabilidad) {
-        this.tasaDeEmpleabilidad = tasaDeEmpleabilidad;
-    }
-
-    public Integer getSalarioPromedio() {
-        return salarioPromedio;
-    }
-
-    public void setSalarioPromedio(Integer salarioPromedio) {
-        this.salarioPromedio = salarioPromedio;
-    }
 }

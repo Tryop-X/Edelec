@@ -1,7 +1,9 @@
 package com.example.edelec.entitys;
 
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -13,6 +15,8 @@ import javax.persistence.Table;
 @IdClass(SedeCarreraPK.class)
 @NoArgsConstructor
 @AllArgsConstructor
+@Getter
+@Setter
 public class PerfilCarrera {
     @Id
     private Perfil perfil;
@@ -20,19 +24,4 @@ public class PerfilCarrera {
     @Id
     private  Carrera carrera;
 
-    public Perfil getPerfil() {
-        return perfil;
-    }
-
-    public void setPerfil(Perfil perfil) {
-        this.perfil = perfil;
-    }
-
-    public Carrera getCarrera() {
-        return carrera;
-    }
-
-    public void setCarrera(Carrera carrera) {
-        this.carrera = carrera;
-    }
 }

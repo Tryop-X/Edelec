@@ -1,8 +1,6 @@
 package com.example.edelec.entitys;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDateTime;
@@ -18,6 +16,8 @@ import javax.validation.constraints.Size;
 @Table(name = "comentarios")
 @NoArgsConstructor
 @AllArgsConstructor
+@Getter
+@Setter
 
 public class Comentario {
     @Id
@@ -43,43 +43,4 @@ public class Comentario {
     @JoinColumn(name = "idUniversidades",nullable = false,  foreignKey = @ForeignKey(name = "FK_Universidada_Comentario"))
     private Universidad universidad;
 
-    public Integer getIdComentario() {
-        return idComentario;
-    }
-
-    public void setIdComentario(Integer idComentario) {
-        this.idComentario = idComentario;
-    }
-
-    public LocalDateTime getTiempo() {
-        return tiempo;
-    }
-
-    public void setTiempo(LocalDateTime tiempo) {
-        this.tiempo = tiempo;
-    }
-
-    public String getContenido() {
-        return contenido;
-    }
-
-    public void setContenido(String contenido) {
-        this.contenido = contenido;
-    }
-
-    public Usuario getUser() {
-        return user;
-    }
-
-    public void setUser(Usuario user) {
-        this.user = user;
-    }
-
-    public Universidad getUniversidad() {
-        return universidad;
-    }
-
-    public void setUniversidad(Universidad universidad) {
-        this.universidad = universidad;
-    }
 }
