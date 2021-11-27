@@ -15,6 +15,7 @@ public interface UsuarioService extends UserDetailsService {
 
     Usuario updateUsuario(Usuario usuario);
     List<Usuario> getAllUsuario();
+    void deleteUsuario(Integer IdCarrera);
 
 
 }

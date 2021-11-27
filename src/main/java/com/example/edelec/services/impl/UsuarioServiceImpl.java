@@ -41,14 +41,13 @@ public class UsuarioServiceImpl implements UsuarioService, UserDetailsService {
         return usuarioRepository.findAll();
     }
 
-
-
-
-
-
     @Override
     public Usuario updateUsuario(Usuario usuario) {
         return usuarioRepository.save(usuario);
+    }
+
+    public void deleteUsuario(Integer IdUsuario){
+        usuarioRepository.deleteById(IdUsuario);
     }
 
 

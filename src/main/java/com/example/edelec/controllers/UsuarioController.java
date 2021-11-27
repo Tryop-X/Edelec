@@ -31,7 +31,7 @@ public class UsuarioController {
         return new ResponseEntity<>(usuario, HttpStatus.OK);
     }
 
-    @GetMapping("/{carreraId}")
+    @GetMapping("/{idUsuario}")
     public ResponseEntity<Usuario> getUsuarioById(@PathVariable("idUsuario") String idUsuario) {
         Usuario usuario =usuarioService.getUsuarioById(idUsuario);
         return new ResponseEntity<>(usuario, HttpStatus.OK);
@@ -43,6 +43,11 @@ public class UsuarioController {
         return new ResponseEntity<>(usuarioActualizar, HttpStatus.OK);
     }
 
+    @DeleteMapping("/{idUsuario}")
+    public ResponseEntity<Void> deleteUsuario(@PathVariable("idUsuario") Integer idUsuario){
+        usuarioService.deleteUsuario(idUsuario);
+        return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
+    }
 
 
 }

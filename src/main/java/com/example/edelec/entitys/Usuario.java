@@ -59,7 +59,7 @@ public class Usuario implements UserDetails {
     private List<Comentario> coment;
 
     @OneToOne(mappedBy = "usuario", cascade = CascadeType.ALL)
-    private Perfil perfil;
+    private Test test;
 
 
 
