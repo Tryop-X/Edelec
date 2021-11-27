@@ -32,22 +32,27 @@ public class Usuario implements UserDetails {
 
     @NotNull
     @Size(min = 6, max = 30, message = "Nombre no valido")
-    @Column(name = "nombre", nullable = false)
+    @Column(name = "usuarios", nullable = false)
+    private String userName;
+
+    @NotNull
+    @Size(min = 6, max = 30, message = "Nombre no valido")
+    @Column(name = "nombres", nullable = false)
     private String nombre;
 
     @NotNull
     @Size(min = 6, max = 30, message = "Nombre no valido")
-    @Column(name = "Apellido", nullable = false)
+    @Column(name = "apellidos", nullable = false)
     private String apellido;
 
     @NotNull
     @Email
-    @Column(name = "Correo", nullable = false)
+    @Column(name = "correos", nullable = false)
     private String correo;
 
     @NotNull
     @Size(min = 8,max = 16, message = "Contraseña no valida")
-    @Column(name = "contraseña", nullable = false)
+    @Column(name = "contraseñas", nullable = false)
     private String contraseña;
 
     @OneToMany(mappedBy = "User",cascade ={CascadeType.ALL})

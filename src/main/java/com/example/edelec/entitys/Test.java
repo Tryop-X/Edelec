@@ -4,8 +4,12 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
@@ -19,6 +23,15 @@ public class Test {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idTest;
 
+    @NotNull
+    @Size(min = 20)
+    @Column(name = "descripciónes", nullable = true, length = 20, unique = true)
+    private String Description;
+
+    @NotNull
+    @DateTimeFormat(pattern = "yyyy-MM-dd hh:mm")
+    @Column(name = "fechas", nullable = false)
+    private LocalDateTime fecha;
 
 
 }

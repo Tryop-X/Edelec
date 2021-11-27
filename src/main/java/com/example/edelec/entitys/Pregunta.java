@@ -18,6 +18,7 @@ public class Pregunta {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idPregunta;
 
+    @Column(name = "preguntas", nullable = false)
     private String pregunta;
 
     private Integer point;
