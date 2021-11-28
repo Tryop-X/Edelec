@@ -33,15 +33,6 @@ public class UniversidadServiceImpl implements UniversidadService {
         return  universidadRepository.buscarUniversidad(name);
     }
 
-    @Override
-    public List<Object> getUniversidadByDsitrito(String distrito){
-        return universidadRepository.buscarPorDistrito(distrito);
-    }
-
-    @Override
-    public List<Object> getUniversidadByCiudad(String ciudad){
-        return universidadRepository.buscarPorCiudad(ciudad);
-    }
 
     @Override
     public Universidad updateUniversidad(Universidad universidad){

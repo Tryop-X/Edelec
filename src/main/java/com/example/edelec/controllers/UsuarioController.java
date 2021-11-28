@@ -11,6 +11,7 @@ import javax.validation.Valid;
 import java.util.List;
 
 @RestController
+@RequestMapping("/usuarios")
 public class UsuarioController {
 
     private final UsuarioService usuarioService;
@@ -35,6 +36,12 @@ public class UsuarioController {
     public ResponseEntity<Usuario> getUsuarioById(@PathVariable("idUsuario") String idUsuario) {
         Usuario usuario =usuarioService.getUsuarioById(idUsuario);
         return new ResponseEntity<>(usuario, HttpStatus.OK);
+    }
+
+    @PostMapping("login")
+    public ResponseEntity<Integer> getUsuarioById(@RequestBody Usuario usuario) {
+        Integer integer=usuarioService.Login(usuario);
+        return new ResponseEntity<Integer>(integer,HttpStatus.OK);
     }
 
     @PutMapping

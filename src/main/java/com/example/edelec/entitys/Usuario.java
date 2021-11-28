@@ -53,13 +53,14 @@ public class Usuario implements UserDetails {
     @NotNull
     @Size(min = 8,max = 16, message = "Contraseña no valida")
     @Column(name = "contraseñas", nullable = false)
-    private String contraseña;
+    private String contrasena;
 
-    @OneToMany(mappedBy = "User",cascade ={CascadeType.ALL})
+
+    @OneToMany(mappedBy = "user", cascade ={CascadeType.ALL})
     private List<Comentario> coment;
 
-    @OneToOne(mappedBy = "usuario", cascade = CascadeType.ALL)
-    private Test test;
+    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
+    private List<Test> tests;
 
 
 

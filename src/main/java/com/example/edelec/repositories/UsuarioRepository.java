@@ -17,13 +17,10 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Integer> {
     Optional<Usuario> findByCorreo(String correo);
 
     @Query("select u FROM  Usuario u WHERE u.nombre=:nombre")
-    List<Usuario> buscarnombredeUsuario(@Param("nombre") String nombre);
+    List<Usuario> getAllByName(@Param("nombre") String nombre);
 
-    @Query("select u FROM Usuario u WHERE u.apellido=:apellido")
-    List<Usuario>buscarapellidodeUsuario(@Param("apellido")String apellido);
-
-    @Query("select u FROM  Usuario u WHERE u.correo=:correo")
-    List<Usuario> buscarcorreodeUsuario(@Param("correo")String correo);
+    @Query("select u FROM Usuario u WHERE u.userName=:User")
+    Usuario getByUser(@Param("User") String user);
 
     @Query("select u FROM  Usuario u WHERE u.idUsuario=:id")
     Usuario getById(@Param("id")String idUsuario);

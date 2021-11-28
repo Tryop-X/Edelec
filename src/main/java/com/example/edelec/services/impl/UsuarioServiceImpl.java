@@ -50,6 +50,23 @@ public class UsuarioServiceImpl implements UsuarioService, UserDetailsService {
         usuarioRepository.deleteById(IdUsuario);
     }
 
+    public List<Usuario> getUsuarioByName(String nombre){
+         return usuarioRepository.getAllByName(nombre);
+    }
+
+    public Integer Login(Usuario usuario){
+        Usuario usuarioTemp = usuarioRepository.getByUser(usuario.getUsername());
+        if (usuarioTemp!=null){
+            if (usuario.getPassword().equals(usuarioTemp.getPassword())) {
+                return 1;
+            }
+            else{
+                return -1;
+            }
+        }
+        return 0;
+    }
+
 
     @Override
     public UserDetails loadUserByUsername(String email)

@@ -14,10 +14,7 @@ public interface UniversidadRepository extends JpaRepository<Universidad, Intege
     @Query("SELECT u FROM  Universidad u WHERE u.Name=:name")
     Universidad buscarUniversidad(@Param("name") String name);
 
-    @Query("SELECT u.Name from Universidad u inner JOIN u.sede b where b.Dsitrito=:busqueda")
-    List<Object> buscarPorDistrito(@Param("busqueda") String busqueda);
-
-    @Query("SELECT u.Name from Universidad u inner JOIN u.sede b where b.ciudad=:busqueda")
-    List<Object> buscarPorCiudad(@Param("busqueda") String busqueda);
+    @Query("SELECT u.Name from Universidad u inner JOIN u.sede b where b.ubicion=:busqueda")
+    List<Object> buscarPorUbicacion(@Param("busqueda") String busqueda);
 
 }

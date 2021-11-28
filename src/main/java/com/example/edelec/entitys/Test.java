@@ -33,5 +33,10 @@ public class Test {
     @Column(name = "fechas", nullable = false)
     private LocalDateTime fecha;
 
+    @ManyToOne
+    @JoinColumn(name = "idUsuario",nullable = false,  foreignKey = @ForeignKey(name = "FK_Test_Usuario"))
+    private Usuario usuario;
 
+    @OneToMany(mappedBy = "test", cascade = CascadeType.ALL)
+    private List<Pregunta> preguntas;
 }

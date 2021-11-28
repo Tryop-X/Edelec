@@ -12,6 +12,8 @@ public interface UsuarioService extends UserDetailsService {
 
     Usuario createUsuario(Usuario usuario);
     Usuario getUsuarioById(String IdUsuario);
+    List<Usuario> getUsuarioByName(String nombre);
+    Integer Login(Usuario usuario);
 
     Usuario updateUsuario(Usuario usuario);
     List<Usuario> getAllUsuario();
