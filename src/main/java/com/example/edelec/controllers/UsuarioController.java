@@ -32,16 +32,29 @@ public class UsuarioController {
         return new ResponseEntity<>(usuario, HttpStatus.OK);
     }
 
-    @GetMapping("/{idUsuario}")
-    public ResponseEntity<Usuario> getUsuarioById(@PathVariable("idUsuario") String idUsuario) {
+
+    @GetMapping("/id/{idUsuario}")
+    public ResponseEntity<Usuario> getUsuarioById(@PathVariable("idUsuario") Integer idUsuario) {
         Usuario usuario =usuarioService.getUsuarioById(idUsuario);
         return new ResponseEntity<>(usuario, HttpStatus.OK);
     }
 
+    @GetMapping("/user/{user}")
+    public ResponseEntity<Usuario> getUsuarioByUser(@PathVariable("user") String user) {
+        Usuario usuario =usuarioService.getUsuarioByUser(user);
+        return new ResponseEntity<>(usuario, HttpStatus.OK);
+    }
+
+    @GetMapping("/name/{idUsuario}")
+    public ResponseEntity<List<Usuario>> getUsuarioByname(@PathVariable("idUsuario") String Name) {
+        List<Usuario> usuario =usuarioService.getUsuarioByName(Name);
+        return new ResponseEntity<>(usuario, HttpStatus.OK);
+    }
+
     @PostMapping("login")
-    public ResponseEntity<Integer> getUsuarioById(@RequestBody Usuario usuario) {
+    public ResponseEntity<Integer> login(@RequestBody Usuario usuario) {
         Integer integer=usuarioService.Login(usuario);
-        return new ResponseEntity<Integer>(integer,HttpStatus.OK);
+        return new ResponseEntity<>(integer,HttpStatus.OK);
     }
 
     @PutMapping

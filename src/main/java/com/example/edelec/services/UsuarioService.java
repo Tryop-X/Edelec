@@ -8,12 +8,13 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 
 import java.util.List;
 
-public interface UsuarioService extends UserDetailsService {
+public interface UsuarioService  {
 
     Usuario createUsuario(Usuario usuario);
-    Usuario getUsuarioById(String IdUsuario);
+    Usuario getUsuarioById(Integer IdUsuario);
     List<Usuario> getUsuarioByName(String nombre);
     Integer Login(Usuario usuario);
+    Usuario getUsuarioByUser(String User);
 
     Usuario updateUsuario(Usuario usuario);
     List<Usuario> getAllUsuario();

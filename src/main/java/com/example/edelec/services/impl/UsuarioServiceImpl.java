@@ -4,19 +4,15 @@ import com.example.edelec.entitys.Usuario;
 
 import com.example.edelec.repositories.UsuarioRepository;
 import com.example.edelec.services.UsuarioService;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
+
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
 
-public class UsuarioServiceImpl implements UsuarioService, UserDetailsService {
+public class UsuarioServiceImpl implements UsuarioService {
 
-    private final static String USER_NO_FOUND_MSG =
-            "Tu e-mail %s no funciona";
     private final UsuarioRepository usuarioRepository;
 
 
@@ -32,8 +28,8 @@ public class UsuarioServiceImpl implements UsuarioService, UserDetailsService {
 
 
     @Override
-    public Usuario getUsuarioById(String idUsuario) {
-        return usuarioRepository.getById(idUsuario);
+    public Usuario getUsuarioById(Integer idUsuario) {
+        return usuarioRepository.findById(idUsuario).orElse(new Usuario());
     }
 
     @Override
@@ -50,14 +46,18 @@ public class UsuarioServiceImpl implements UsuarioService, UserDetailsService {
         usuarioRepository.deleteById(IdUsuario);
     }
 
+    public  Usuario getUsuarioByUser(String user){
+        return usuarioRepository.getByUser(user);
+    }
+
     public List<Usuario> getUsuarioByName(String nombre){
          return usuarioRepository.getAllByName(nombre);
     }
 
     public Integer Login(Usuario usuario){
-        Usuario usuarioTemp = usuarioRepository.getByUser(usuario.getUsername());
-        if (usuarioTemp!=null){
-            if (usuario.getPassword().equals(usuarioTemp.getPassword())) {
+        Usuario usuarioTemp = usuarioRepository.getByUser(usuario.getUserName());
+        if (usuarioTemp != null){
+            if (usuario.getContrasena().equals(usuarioTemp.getContrasena())) {
                 return 1;
             }
             else{
@@ -65,14 +65,5 @@ public class UsuarioServiceImpl implements UsuarioService, UserDetailsService {
             }
         }
         return 0;
-    }
-
-
-    @Override
-    public UserDetails loadUserByUsername(String email)
-            throws UsernameNotFoundException {
-        return usuarioRepository.findByCorreo(email)
-                .orElseThrow(()->
-                        new UsernameNotFoundException(String.format(USER_NO_FOUND_MSG,email)));
     }
 }
