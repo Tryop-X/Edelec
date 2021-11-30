@@ -1,14 +1,12 @@
 package com.example.edelec.entitys;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.*;
 
 import javax.persistence.*;
-import java.security.PrivateKey;
 import java.util.List;
 
+@Data
 @Entity
 @Table(name = "preguntas")
 @NoArgsConstructor
@@ -23,6 +21,7 @@ public class Pregunta {
     @Column(name = "contenidos", nullable = false)
     private String contenido;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "idTest",nullable = false,  foreignKey = @ForeignKey(name = "FK_Pregunta_Test"))
     private Test test;

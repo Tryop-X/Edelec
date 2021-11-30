@@ -19,15 +19,16 @@ public class TestController {
 
     private final TestService testService;
 
-    public TestController(TestService testService) {this.testService = testService;
+    public TestController(TestService testService) {
+        this.testService = testService;
     }
 
-
     @PostMapping
-    public ResponseEntity<Test> createTest(@Valid @RequestBody Test test) {
+    public ResponseEntity<Test> createTest(@RequestBody Test test) {
         Test testNew =testService.createTest(test);
         return  new ResponseEntity<Test>(testNew, HttpStatus.CREATED);
     }
+
     @GetMapping
     public ResponseEntity<List<Test>> getAllTest() {
         List<Test> test =testService.getAllTest();

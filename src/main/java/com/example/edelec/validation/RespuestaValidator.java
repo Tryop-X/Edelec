@@ -1,0 +1,16 @@
+package com.example.edelec.validation;
+
+import com.example.edelec.entitys.Respuesta;
+import com.example.edelec.exception.IncorrectResourceRequestException;
+
+public class RespuestaValidator {
+
+    public static void validate(Respuesta respuesta){
+        if(respuesta.getContenidoRespuesta()==null || respuesta.getContenidoRespuesta().trim().isEmpty()){
+            throw  new IncorrectResourceRequestException("Esta pregunta no tiene description");
+        }
+        if(respuesta.getSelect()==null){
+            throw  new IncorrectResourceRequestException("Respuesta null");
+        }
+    }
+}

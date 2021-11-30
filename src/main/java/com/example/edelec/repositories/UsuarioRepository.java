@@ -21,7 +21,7 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Integer> {
     Usuario getByUser(@Param("user") String user);
 
     @Query("select u FROM  Usuario u WHERE u.idUsuario=:id")
-    Usuario getById(@Param("id")String idUsuario);
+    Usuario getById(@Param("id")Integer idUsuario);
 
 
 

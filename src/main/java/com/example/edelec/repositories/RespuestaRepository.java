@@ -7,16 +7,16 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+
 import java.util.List;
 
 @Repository
 public interface RespuestaRepository extends JpaRepository<Respuesta, Integer> {
 
     @Query("SELECT r FROM  Respuesta r WHERE r.contenidoRespuesta=:contenido")
-    Respuesta buscarUniversidad(@Param("contenido") String contennt);
+    Respuesta buscarRespusta(@Param("contenido") String contennt);
 
-
-    @Query("SELECT c FROM RespuestaCarrera.idCarrera c WHERE RespuestaCarrera.idRespuesta.contenidoRespuesta=:contenido")
-    List<Carrera> VerCarerasInvolucradas(@Param("contenido") String contennt);
+    @Query("SELECT r FROM Respuesta r WHERE r.pregunta.idPregunta=:pregunta")
+    List<Respuesta> RespuestaByPregunta(@Param("pregunta") Integer idPregunta);
 
 }

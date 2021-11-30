@@ -2,6 +2,7 @@ package com.example.edelec.services.impl;
 
 import com.example.edelec.entitys.Usuario;
 
+import com.example.edelec.exception.ResourceNotFoundException;
 import com.example.edelec.repositories.UsuarioRepository;
 import com.example.edelec.services.UsuarioService;
 
@@ -29,7 +30,8 @@ public class UsuarioServiceImpl implements UsuarioService {
 
     @Override
     public Usuario getUsuarioById(Integer idUsuario) {
-        return usuarioRepository.findById(idUsuario).orElse(new Usuario());
+        return usuarioRepository.findById(idUsuario)
+                .orElseThrow(()->new ResourceNotFoundException("No Existe el usuario: "+idUsuario));
     }
 
     @Override

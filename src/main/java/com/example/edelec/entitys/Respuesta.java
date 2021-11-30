@@ -1,12 +1,11 @@
 package com.example.edelec.entitys;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.*;
 
 import javax.persistence.*;
 
+@Data
 @Entity
 @Table(name = "respuestas")
 @NoArgsConstructor
@@ -21,6 +20,10 @@ public class Respuesta {
     @Column(name = "contenidosRespuestas", nullable = false)
     private String contenidoRespuesta;
 
+    @Column(name = "Selacionado", nullable = false)
+    private Boolean select;
+
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "idPregunta",nullable = false,  foreignKey = @ForeignKey(name = "FK_Respuesta_Pregunta"))
     private Pregunta pregunta;

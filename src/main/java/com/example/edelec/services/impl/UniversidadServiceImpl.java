@@ -5,6 +5,7 @@ import com.example.edelec.repositories.UniversidadRepository;
 import com.example.edelec.services.UniversidadService;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 @Service
@@ -16,9 +17,7 @@ public class UniversidadServiceImpl implements UniversidadService {
         this.universidadRepository = universidadRepository;
     }
 
-
-
-    @Override
+    @Transactional
     public Universidad createUniversidad(Universidad universidad){
         return universidadRepository.save(universidad);
     }

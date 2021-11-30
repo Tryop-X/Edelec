@@ -1,17 +1,18 @@
 package com.example.edelec.entitys;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 
+@Data
 @Entity
 @Table(name = "tests")
 @NoArgsConstructor
@@ -25,18 +26,20 @@ public class Test {
 
     @NotNull
     @Size(min = 20)
-    @Column(name = "descripciónes", nullable = true, length = 20, unique = true)
+    @Column(name = "descripciónes", nullable = false)
     private String description;
 
-    @NotNull
-    @DateTimeFormat(pattern = "yyyy-MM-dd hh:mm")
-    @Column(name = "fechas", nullable = false)
+    @JsonFormat(pattern = "dd/MM/yyyy")
+    @Column(name = "fechas", nullable = false, updatable = false)
     private LocalDateTime fecha;
 
+    @JsonIgnore
     @ManyToOne
-    @JoinColumn(name = "idUsuario",nullable = false,  foreignKey = @ForeignKey(name = "FK_Test_Usuario"))
+    @JoinColumn(name = "idUsuario",  foreignKey = @ForeignKey(name = "FK_Test_Usuario"))
     private Usuario usuario;
 
     @OneToMany(mappedBy = "test", cascade = CascadeType.ALL)
     private List<Pregunta> preguntas;
 }
+
+

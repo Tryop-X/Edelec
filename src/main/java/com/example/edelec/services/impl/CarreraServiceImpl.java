@@ -4,8 +4,8 @@ import com.example.edelec.repositories.CarreraRepository;
 import org.springframework.stereotype.Service;
 import com.example.edelec.services.CarreraService;
 
+import javax.transaction.Transactional;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class CarreraServiceImpl implements CarreraService{
@@ -19,7 +19,7 @@ public class CarreraServiceImpl implements CarreraService{
 
 
 
-    @Override
+    @Transactional
     public Carrera createCarrera(Carrera carrera) {
         return carreraRepository.save(carrera);
     }
