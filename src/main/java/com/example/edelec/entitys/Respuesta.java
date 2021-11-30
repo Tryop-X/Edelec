@@ -8,7 +8,7 @@ import lombok.Setter;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "respuesatas")
+@Table(name = "respuestas")
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
@@ -18,8 +18,8 @@ public class Respuesta {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idRespuesta;
 
-    @Column(name = "contenidos respuesta", nullable = false)
-    private String contenido_respuesta;
+    @Column(name = "contenidosRespuestas", nullable = false)
+    private String contenidoRespuesta;
 
     @ManyToOne
     @JoinColumn(name = "idPregunta",nullable = false,  foreignKey = @ForeignKey(name = "FK_Respuesta_Pregunta"))
