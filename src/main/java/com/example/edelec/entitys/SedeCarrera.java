@@ -20,8 +20,8 @@ import javax.validation.constraints.Size;
 public class SedeCarrera{
     @Id
     private Sede idSede;
-    @Id
 
+    @Id
     private Carrera idCarrera;
 
     @Column(name = "mallas", nullable = true)

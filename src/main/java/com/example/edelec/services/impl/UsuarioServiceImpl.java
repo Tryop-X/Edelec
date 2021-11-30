@@ -54,16 +54,7 @@ public class UsuarioServiceImpl implements UsuarioService {
          return usuarioRepository.getAllByName(nombre);
     }
 
-    public Integer Login(Usuario usuario){
-        Usuario usuarioTemp = usuarioRepository.getByUser(usuario.getUserName());
-        if (usuarioTemp != null){
-            if (usuario.getContrasena().equals(usuarioTemp.getContrasena())) {
-                return 1;
-            }
-            else{
-                return -1;
-            }
-        }
+    public Integer Login(Usuario usuario) {
         return 0;
     }
 }

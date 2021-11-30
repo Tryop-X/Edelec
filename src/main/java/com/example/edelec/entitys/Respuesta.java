@@ -18,10 +18,10 @@ public class Respuesta {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idRespuesta;
 
-    @Column(name = "contenidos_pregunta", nullable = false)
-    private String contenido_pregunta;
+    @Column(name = "contenidos respuesta", nullable = false)
+    private String contenido_respuesta;
 
     @ManyToOne
     @JoinColumn(name = "idPregunta",nullable = false,  foreignKey = @ForeignKey(name = "FK_Respuesta_Pregunta"))
-    private Respuesta pregunta;
+    private Pregunta pregunta;
 }
