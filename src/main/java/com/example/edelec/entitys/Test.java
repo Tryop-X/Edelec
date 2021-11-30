@@ -26,7 +26,7 @@ public class Test {
     @NotNull
     @Size(min = 20)
     @Column(name = "descripciónes", nullable = true, length = 20, unique = true)
-    private String Description;
+    private String description;
 
     @NotNull
     @DateTimeFormat(pattern = "yyyy-MM-dd hh:mm")
