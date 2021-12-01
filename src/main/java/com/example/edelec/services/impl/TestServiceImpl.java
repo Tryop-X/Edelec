@@ -38,10 +38,10 @@ public class TestServiceImpl implements TestService {
         TestValidator.validate(test);
         Usuario usuario=usuarioRepository.findById(test.getUsuario().getIdUsuario())
                 .orElseThrow(()->new ResourceNotFoundException("No Existe el usuario: "+test.getUsuario().getIdUsuario()));
-        usuario.getTests().add(test);
         test.setUsuario(usuario);
         test.setFecha(LocalDateTime.now());
         testRepository.save(test);
+        usuario.getTests().add(test);
         for (Pregunta pregunta : test.getPreguntas()){
             PreguntaValidator.validate(pregunta);
             pregunta.setTest(test);
