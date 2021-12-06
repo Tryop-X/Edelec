@@ -7,11 +7,9 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 
 @Entity
-@Table(name = "sedes_carreras")
+@Table(name = "sedesCarreras")
 @IdClass(SedeCarreraPK.class)
 @NoArgsConstructor
 @AllArgsConstructor
@@ -20,12 +18,14 @@ import javax.validation.constraints.Size;
 public class SedeCarrera{
     @Id
     private Sede idSede;
+
     @Id
-    private Carrera IdCarrera;
-    @NotNull
-    @Size(min = 20, max = 300, message = "Debes poner el enlace a su malla")
-    @Column(name = "Malla")
+    private Carrera idCarrera;
+
+    @Column(name = "mallas", nullable = true)
     private String mallasUniversitarias;//Noes string es una imagen
-    @Column(name = "precio", nullable = false)
+
+    @Column(name = "precios", nullable = false)
     private float precio;
+
 }

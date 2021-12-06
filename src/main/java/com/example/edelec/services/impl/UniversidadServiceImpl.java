@@ -5,6 +5,7 @@ import com.example.edelec.repositories.UniversidadRepository;
 import com.example.edelec.services.UniversidadService;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 @Service
@@ -16,9 +17,7 @@ public class UniversidadServiceImpl implements UniversidadService {
         this.universidadRepository = universidadRepository;
     }
 
-
-
-    @Override
+    @Transactional
     public Universidad createUniversidad(Universidad universidad){
         return universidadRepository.save(universidad);
     }
@@ -33,15 +32,6 @@ public class UniversidadServiceImpl implements UniversidadService {
         return  universidadRepository.buscarUniversidad(name);
     }
 
-    @Override
-    public List<Object> getUniversidadByDsitrito(String distrito){
-        return universidadRepository.buscarPorDistrito(distrito);
-    }
-
-    @Override
-    public List<Object> getUniversidadByCiudad(String ciudad){
-        return universidadRepository.buscarPorCiudad(ciudad);
-    }
 
     @Override
     public Universidad updateUniversidad(Universidad universidad){

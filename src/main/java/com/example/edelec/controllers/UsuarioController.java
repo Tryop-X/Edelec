@@ -11,6 +11,7 @@ import javax.validation.Valid;
 import java.util.List;
 
 @RestController
+@RequestMapping("/usuarios")
 public class UsuarioController {
 
     private final UsuarioService usuarioService;
@@ -20,7 +21,7 @@ public class UsuarioController {
     }
 
     @PostMapping
-    public ResponseEntity<Usuario> createUsuario(@Valid @RequestBody Usuario usuario) {
+    public ResponseEntity<Usuario> createUsuario(@RequestBody Usuario usuario) {
         Usuario usuarioNew =usuarioService.createUsuario(usuario);
         return  new ResponseEntity<Usuario>(usuarioNew, HttpStatus.CREATED);
     }
@@ -31,10 +32,29 @@ public class UsuarioController {
         return new ResponseEntity<>(usuario, HttpStatus.OK);
     }
 
-    @GetMapping("/{carreraId}")
-    public ResponseEntity<Usuario> getUsuarioById(@PathVariable("idUsuario") String idUsuario) {
+
+    @GetMapping("/id/{idUsuario}")
+    public ResponseEntity<Usuario> getUsuarioById(@PathVariable("idUsuario") Integer idUsuario) {
         Usuario usuario =usuarioService.getUsuarioById(idUsuario);
         return new ResponseEntity<>(usuario, HttpStatus.OK);
+    }
+
+    @GetMapping("/user/{user}")
+    public ResponseEntity<Usuario> getUsuarioByUser(@PathVariable("user") String user) {
+        Usuario usuario =usuarioService.getUsuarioByUser(user);
+        return new ResponseEntity<>(usuario, HttpStatus.OK);
+    }
+
+    @GetMapping("/name/{idUsuario}")
+    public ResponseEntity<List<Usuario>> getUsuarioByname(@PathVariable("idUsuario") String Name) {
+        List<Usuario> usuario =usuarioService.getUsuarioByName(Name);
+        return new ResponseEntity<>(usuario, HttpStatus.OK);
+    }
+
+    @PostMapping("login")
+    public ResponseEntity<Integer> login(@RequestBody Usuario usuario) {
+        Integer integer=usuarioService.Login(usuario);
+        return new ResponseEntity<>(integer,HttpStatus.OK);
     }
 
     @PutMapping
@@ -43,6 +63,11 @@ public class UsuarioController {
         return new ResponseEntity<>(usuarioActualizar, HttpStatus.OK);
     }
 
+    @DeleteMapping("/{idUsuario}")
+    public ResponseEntity<Void> deleteUsuario(@PathVariable("idUsuario") Integer idUsuario){
+        usuarioService.deleteUsuario(idUsuario);
+        return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
+    }
 
 
 }

@@ -21,20 +21,23 @@ import javax.validation.constraints.Size;
 public class Sede {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idSede;
+    private Integer idSede;
 
     @NotNull
     @Size(min = 5, max = 20, message = "Ciudad no valido")
-    @Column(name = "Ubicacion", nullable = false)
-    private String Ubicacion;
+
+    @Column(name = "ubicaciones", nullable = false)
+    private Long  ubicion;
 
     @NotNull
-    @Size(min = 5, max = 20, message = "Departamento no valido")
-    @Column(name = "Departamento", nullable = false)
-    private String Direccion;
+    @Size(min = 5, max = 20, message = "Ciudad no valido")
+    @Column(name = "direcciones", nullable = false)
+    private String direccion;
+
 
     @ManyToOne
-    @JoinColumn(name = "id_universidad",nullable = false,  foreignKey = @ForeignKey(name = "FK_Sede_Universidad"))
+    @JoinColumn(name = "idUniversidad",nullable = false,  foreignKey = @ForeignKey(name = "FK_Sede_Universidad"))
     private Universidad universidad;
+
 
 }

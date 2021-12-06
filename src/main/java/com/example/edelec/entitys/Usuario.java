@@ -1,12 +1,17 @@
 package com.example.edelec.entitys;
 
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.util.Collection;
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -17,72 +22,45 @@ import javax.persistence.Table;
 @Table(name = "usuarios")
 @NoArgsConstructor
 @AllArgsConstructor
+@Getter
+@Setter
 public class Usuario {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idUsuario;
 
     @NotNull
     @Size(min = 6, max = 30, message = "Nombre no valido")
-    @Column(name = "nombre", nullable = false)
+    @Column(name = "usuarios", nullable = false , unique = true)
+    private String userName;
+
+    @NotNull
+    @Size(min = 6, max = 30, message = "Nombre no valido")
+    @Column(name = "nombres", nullable = false)
     private String nombre;
 
     @NotNull
     @Size(min = 6, max = 30, message = "Nombre no valido")
-    @Column(name = "Apellido", nullable = false)
+    @Column(name = "apellidos", nullable = false)
     private String apellido;
 
     @NotNull
     @Email
-    @Column(name = "Correo", nullable = false)
+    @Column(name = "correos", nullable = false)
     private String correo;
 
     @NotNull
     @Size(min = 8,max = 16, message = "Contraseña no valida")
-    @Column(name = "contraseña", nullable = false)
-    private String contraseña;
+    @Column(name = "contraseñas", nullable = false)
+    private String contrasena;
 
-    @OneToMany(mappedBy = "User",cascade ={CascadeType.ALL})
+
+    @OneToMany(mappedBy = "user", cascade ={CascadeType.ALL})
     private List<Comentario> coment;
 
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombredeUsuario(String nombredeUsuario) {
-        this.nombre = nombredeUsuario;
-    }
-
-    public String getApellido() {
-        return apellido;
-    }
-
-    public void setApellido(String apellido) {
-        this.apellido = apellido;
-    }
-
-    public String getCorreo() {
-        return correo;
-    }
-
-    public void setCorreo(String correo) {
-        this.correo = correo;
-    }
-
-    public String getContraseña() {
-        return contraseña;
-    }
-
-    public void setContraseña(String contraseña) {
-        this.contraseña = contraseña;
-    }
+    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
+    private List<Test> tests;
 
 
-    public Integer getIdUsuario() {
-        return idUsuario;
-    }
-
-    public void setIdUsuario(Integer idUsuario) {
-        this.idUsuario = idUsuario;
-    }
 }

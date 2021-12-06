@@ -4,10 +4,10 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import java.io.Serializable;
 
-public class SedeCarreraPK implements Serializable {
+public class RespuestaCarreraPK implements Serializable {
     @ManyToOne
-    @JoinColumn(name="idSede", nullable = false)
-    private Sede idSede;
+    @JoinColumn(name="idRespuesta", nullable = false)
+    private Respuesta idRespuesta;
 
     @ManyToOne
     @JoinColumn(name="idCarrera", nullable = false)

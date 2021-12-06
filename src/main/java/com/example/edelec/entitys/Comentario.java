@@ -1,8 +1,6 @@
 package com.example.edelec.entitys;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDateTime;
@@ -18,54 +16,31 @@ import javax.validation.constraints.Size;
 @Table(name = "comentarios")
 @NoArgsConstructor
 @AllArgsConstructor
+@Getter
+@Setter
 
 public class Comentario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long comentarioId;
+    private Integer idComentario;
 
     @NotNull
     @DateTimeFormat(pattern = "yyyy-MM-dd hh:mm")
-    @Column(name = "Fecha", nullable = false)
+    @Column(name = "Fechas", nullable = false)
     private LocalDateTime tiempo;
 
     @NotNull
     @NotBlank
     @Size(min = 1, message = "Este mensaje esta vacio")
-    @Column(name = "contenido", nullable = false)
+    @Column(name = "contenidos", nullable = false)
     private String contenido;
 
     @ManyToOne
-    @JoinColumn(name = "id_usuario",nullable = false,  foreignKey = @ForeignKey(name = "FK_Usuario_Comentario"))
-    private Usuario User;
+    @JoinColumn(name = "idUsuarios",nullable = false,  foreignKey = @ForeignKey(name = "FK_Usuario_Comentario"))
+    private Usuario user;
 
     @ManyToOne
-    @JoinColumn(name = "id_universidad",nullable = false,  foreignKey = @ForeignKey(name = "FK_Universidada_Comentario"))
+    @JoinColumn(name = "idUniversidades",nullable = false,  foreignKey = @ForeignKey(name = "FK_Universidada_Comentario"))
     private Universidad universidad;
-
-    public void setComentarioId(Long comentarioId) {
-        this.comentarioId = comentarioId;
-    }
-
-    public LocalDateTime getTiempo() {
-        return tiempo;
-    }
-
-    public void setTiempo(LocalDateTime tiempo) {
-        this.tiempo = tiempo;
-    }
-
-    public String getContenido() {
-        return contenido;
-    }
-
-    public void setContenido(String contenido) {
-        this.contenido = contenido;
-    }
-
-    public Long getComentarioId() {
-        return comentarioId;
-    }
-
 
 }

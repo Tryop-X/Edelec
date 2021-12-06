@@ -21,24 +21,24 @@ import javax.validation.constraints.Size;
 public class Carrera {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer IdCarrera;
+    private Integer idCarrera;
 
 
     @NotNull
     @Size(min = 5,max = 30)
-    @Column(name = "nombre", nullable = false, unique = true)
+    @Column(name = "nombres", nullable = false, unique = true)
     private String nombreCarrera;
 
     @NotNull
     @Size(min = 10, max = 300)
-    @Column(name = "descripcion", nullable = false, unique = true)
+    @Column(name = "descripciones", nullable = false, unique = true)
     private String descripcionDeCarrera;
 
     @NotNull
-    @Column(name = "tasaDeEmpleabilidad", nullable = false)
+    @Column(name = "tasasDeEmpleabilidad", nullable = false)
     private Float tasaDeEmpleabilidad;
 
     @NotNull
-    @Column(name = "salarioPromedio", nullable = false)
+    @Column(name = "salariosPromedios", nullable = false)
     private Integer salarioPromedio;
 }
