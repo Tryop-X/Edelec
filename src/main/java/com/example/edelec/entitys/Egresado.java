@@ -17,7 +17,6 @@ public class Egresado {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-
     private Long idEgresado;
 
     @NotNull
@@ -27,5 +26,8 @@ public class Egresado {
     @NotNull
     @Column(name = "curriculum")
     private String curriculum;
+
+    @Column(name = "foto_egresado")
+    private String fotoEgresado;
 
 }
