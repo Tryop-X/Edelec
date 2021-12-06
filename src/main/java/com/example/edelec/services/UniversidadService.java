@@ -9,7 +9,7 @@ public interface UniversidadService {
 
     Universidad createUniversidad(Universidad universidad);
     List<Universidad> getAllUniversidad();
-    Universidad getUniversidadByname(String name);
+    List<Universidad> getUniversidadByname(String name);
     Universidad updateUniversidad(Universidad universidad);
     void deleteUniversidad(String name);
 }

@@ -1,6 +1,7 @@
 package com.example.edelec.repositories;
 
 import com.example.edelec.entitys.Carrera;
+import com.example.edelec.entitys.Universidad;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 import org.springframework.data.jpa.repository.Query;
@@ -22,4 +23,8 @@ public interface CarreraRepository extends JpaRepository<Carrera, Integer> {
 
     @Query("Select c FROM Carrera c WHERE c.tasaDeEmpleabilidad=:name")
     List<Carrera> BuscarPorTasa(@Param("name") String name);
+
+    @Query("FROM Carrera c WHERE lower(c.nombreCarrera) LIKE %:name% ")
+    List<Carrera> buscarCarreraNombre(@Param("name") String name);
+
 }

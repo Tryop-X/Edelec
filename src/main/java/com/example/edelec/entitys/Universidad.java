@@ -27,7 +27,7 @@ public class Universidad {
     @NotNull
     @Size(min = 10 , max = 50 , message = "El nombre es muy pqueño")
     @Column(name = "Univerdidad", nullable = false, length = 20, unique = true)
-    private String Name;
+    private String name;
 
     @NotNull
     @Size(min = 20)

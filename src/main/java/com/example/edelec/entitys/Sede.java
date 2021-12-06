@@ -27,7 +27,7 @@ public class Sede {
     @Size(min = 5, max = 20, message = "Ciudad no valido")
 
     @Column(name = "ubicaciones", nullable = false)
-    private Long  ubicion;
+    private Long  ubicacion;
 
     @NotNull
     @Size(min = 5, max = 20, message = "Ciudad no valido")

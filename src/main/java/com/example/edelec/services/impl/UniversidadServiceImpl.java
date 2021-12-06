@@ -16,7 +16,6 @@ public class UniversidadServiceImpl implements UniversidadService {
     public UniversidadServiceImpl(UniversidadRepository universidadRepository) {
         this.universidadRepository = universidadRepository;
     }
-
     @Transactional
     public Universidad createUniversidad(Universidad universidad){
         return universidadRepository.save(universidad);
@@ -28,7 +27,7 @@ public class UniversidadServiceImpl implements UniversidadService {
     }
 
     @Override
-    public Universidad getUniversidadByname(String name){
+    public List<Universidad> getUniversidadByname(String name){
         return  universidadRepository.buscarUniversidad(name);
     }
 
@@ -40,7 +39,7 @@ public class UniversidadServiceImpl implements UniversidadService {
 
     @Override
     public void deleteUniversidad(String name){
-        Integer id =universidadRepository.buscarUniversidad(name).getIdUniversidad();
+        Integer id= universidadRepository.buscarUniversidadByName(name).getIdUniversidad();
         universidadRepository.deleteById(id);
     }
 }

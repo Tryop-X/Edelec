@@ -11,10 +11,9 @@ import java.util.List;
 @Repository
 public interface UniversidadRepository extends JpaRepository<Universidad, Integer> {
 
-    @Query("SELECT u FROM  Universidad u WHERE u.Name=:name")
-    Universidad buscarUniversidad(@Param("name") String name);
+    @Query("FROM Universidad u WHERE lower(u.name) LIKE %:name% ")
+    List<Universidad> buscarUniversidad(@Param("name") String name);
 
-    @Query("SELECT u.Name from Universidad u inner JOIN u.sede b where b.ubicion=:busqueda")
-    List<Object> buscarPorUbicacion(@Param("busqueda") String busqueda);
-
+    @Query("FROM Universidad u WHERE lower(u.name) =: name ")
+    Universidad buscarUniversidadByName(@Param("name") String name);
 }

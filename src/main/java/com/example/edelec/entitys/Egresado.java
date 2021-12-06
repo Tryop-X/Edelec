@@ -23,6 +23,10 @@ public class Egresado {
     @Column(name = "nombre_egresado")
     private String nombreEgresado;
 
+    @ManyToOne
+    @JoinColumn(name="id_sede_carrera", nullable = false, foreignKey = @ForeignKey(name="fk_sede_carrera"))
+    private SedeCarrera sedeCarrera;
+
     @NotNull
     @Column(name = "curriculum")
     private String curriculum;  

@@ -29,19 +29,15 @@ public class CarreraServiceImpl implements CarreraService{
         return carreraRepository.findAll();
     }
 
-
     @Override
-    public Carrera getCarreraById (Integer IdCarrera) {
-        return carreraRepository.findById(IdCarrera).orElse(new Carrera());
+    public List<Carrera> getCarreraByName (String name) {
+        return carreraRepository.buscarCarreraNombre(name);
     }
-
-
 
     @Override
     public Carrera updateCarrera(Carrera carrera) {
         return carreraRepository.save(carrera);
     }
-
 
     @Override
     public void deleteCarrera(Integer IdCarrera) {

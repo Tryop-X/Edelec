@@ -6,8 +6,7 @@ import java.util.List;
 public interface CarreraService {
     Carrera createCarrera(Carrera carrera);
     List<Carrera> getAllCarrera();
-    Carrera getCarreraById(Integer IdCarrera);
-
+    List<Carrera> getCarreraByName(String name);
     Carrera updateCarrera(Carrera carrera);
     void deleteCarrera(Integer IdCarrera);
 }
