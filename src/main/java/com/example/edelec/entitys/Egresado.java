@@ -26,6 +26,6 @@ public class Egresado {
 
     @NotNull
     @Column(name = "curriculum")
-    private String curriculum;      //separado por comas
+    private String curriculum;  
 
 }
