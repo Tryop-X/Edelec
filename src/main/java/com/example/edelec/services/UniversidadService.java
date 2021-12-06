@@ -12,4 +12,6 @@ public interface UniversidadService {
     List<Universidad> getUniversidadByname(String name);
     Universidad updateUniversidad(Universidad universidad);
     void deleteUniversidad(String name);
+    void deleteUniversidadById(Integer idUniversidad);
+
 }

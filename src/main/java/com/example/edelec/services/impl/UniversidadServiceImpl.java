@@ -42,4 +42,9 @@ public class UniversidadServiceImpl implements UniversidadService {
         Integer id= universidadRepository.buscarUniversidadByName(name).getIdUniversidad();
         universidadRepository.deleteById(id);
     }
+
+    @Override
+    public void deleteUniversidadById(Integer idUniversidad) {
+        universidadRepository.deleteById(idUniversidad);
+    }
 }

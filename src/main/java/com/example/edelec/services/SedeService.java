@@ -7,9 +7,10 @@ import java.util.List;
 
 public interface SedeService {
 
-    Sede createEgresado(Sede sede);
-    List<Sede> getAllEgresado();
-    List<Sede> getEgresadoUniversidadCarrera(String name);
-    Egresado updateEgresado(Sede sede);
-    void deleteEgresado(Integer IdSede);
+    Sede createSede(Sede sede);
+    List<Sede> getAllSedes();
+    List<Sede> getSedesNombre(String nombre);
+    List<Sede> getSedesUbicacion(String ubicacion);
+    Sede updateSede(Sede sede);
+    void deleteSede(Integer IdSede);
 }

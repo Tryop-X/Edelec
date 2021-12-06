@@ -2,6 +2,7 @@ package com.example.edelec.services.impl;
 
 import com.example.edelec.entitys.Egresado;
 import com.example.edelec.entitys.Sede;
+import com.example.edelec.repositories.SedeRepository;
 import com.example.edelec.services.SedeService;
 import org.springframework.stereotype.Service;
 
@@ -9,28 +10,41 @@ import java.util.List;
 
 @Service
 public class SedeServiceImpl implements SedeService {
+
+    private final SedeRepository sedeRepository;
+
+    public SedeServiceImpl(SedeRepository sedeRepository) {
+        this.sedeRepository = sedeRepository;
+    }
+
+
     @Override
-    public Sede createEgresado(Sede sede) {
-        return null;
+    public Sede createSede(Sede sede) {
+        return sedeRepository.save(sede);
     }
 
     @Override
-    public List<Sede> getAllEgresado() {
-        return null;
+    public List<Sede> getAllSedes() {
+        return sedeRepository.findAll();
     }
 
     @Override
-    public List<Sede> getEgresadoUniversidadCarrera(String name) {
-        return null;
+    public List<Sede> getSedesNombre(String nombre) {
+        return sedeRepository.buscarPorNombre(nombre);
     }
 
     @Override
-    public Egresado updateEgresado(Sede sede) {
-        return null;
+    public List<Sede> getSedesUbicacion(String ubicacion) {
+        return sedeRepository.buscarPorNombre(ubicacion);
     }
 
     @Override
-    public void deleteEgresado(Integer IdSede) {
+    public Sede updateSede(Sede sede) {
+        return sedeRepository.save(sede);
+    }
 
+    @Override
+    public void deleteSede(Integer IdSede) {
+        sedeRepository.deleteById(IdSede);
     }
 }
