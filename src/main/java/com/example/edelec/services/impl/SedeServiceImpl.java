@@ -17,7 +17,6 @@ public class SedeServiceImpl implements SedeService {
         this.sedeRepository = sedeRepository;
     }
 
-
     @Override
     public Sede createSede(Sede sede) {
         return sedeRepository.save(sede);
