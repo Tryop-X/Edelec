@@ -6,6 +6,8 @@ import com.example.edelec.entitys.Test;
 import com.example.edelec.entitys.Usuario;
 import com.example.edelec.services.TestService;
 
+import com.example.edelec.utils.WrapperResponse;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.List;
 
+@Slf4j
 @RestController
 @RequestMapping("/test")
 public class TestController {
@@ -24,9 +27,10 @@ public class TestController {
     }
 
     @PostMapping
-    public ResponseEntity<Test> createTest(@RequestBody Test test) {
+    public ResponseEntity<WrapperResponse<Test>> createTest(@RequestBody Test test) {
+        System.out.println("creado"+test);
         Test testNew =testService.createTest(test);
-        return  new ResponseEntity<Test>(testNew, HttpStatus.CREATED);
+        return  new WrapperResponse<Test>(true,"success",testNew).createResponse(HttpStatus.CREATED);
     }
 
     @GetMapping
@@ -41,8 +45,8 @@ public class TestController {
     }
 
     @PutMapping
-    public ResponseEntity<Test> updateTest(@RequestBody Test test) {
-        Test testactualizar =testService.updateTest(test);
+    public ResponseEntity<Test> ReplaceTestBase(@RequestBody Test test) {
+        Test testactualizar =testService.replaceTestBase(test) ;
         return new ResponseEntity<>(testactualizar, HttpStatus.OK);
     }
 
