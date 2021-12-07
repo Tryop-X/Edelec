@@ -9,8 +9,12 @@ public class RespuestaValidator {
         if(respuesta.getContenidoRespuesta()==null || respuesta.getContenidoRespuesta().trim().isEmpty()){
             throw  new IncorrectResourceRequestException("Esta pregunta no tiene description");
         }
-        if(respuesta.getSelect()==null){
-            throw  new IncorrectResourceRequestException("Respuesta null");
+    }
+
+    public static void validateUser(Respuesta respuesta){
+        if (respuesta.getSelect()==null){
+            throw  new IncorrectResourceRequestException("Esta pregunta no tiene description");
         }
     }
+
 }

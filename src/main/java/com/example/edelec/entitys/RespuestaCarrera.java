@@ -1,14 +1,12 @@
 package com.example.edelec.entitys;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.IdClass;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "RespuestasCarreras")
@@ -18,6 +16,7 @@ import javax.persistence.Table;
 @Getter
 @Setter
 public class RespuestaCarrera {
+    @JsonIgnore
     @Id
     private Respuesta idRespuesta;
 

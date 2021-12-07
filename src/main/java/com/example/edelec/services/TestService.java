@@ -8,10 +8,8 @@ import java.util.List;
 public interface TestService {
     Test createTest(Test test);
     Test getTestById(Integer IdTest);
-
-    Test updateTest(Test test);
+    Test replaceTestBase(Test test);
 
     void deleteTest(Integer IdTest);
-
     List<Test> getAllTest();
 }

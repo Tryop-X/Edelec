@@ -1,5 +1,6 @@
 package com.example.edelec.entitys;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -55,11 +56,12 @@ public class Usuario {
     @Column(name = "contraseñas", nullable = false)
     private String contrasena;
 
-
+    @JsonIgnore
     @OneToMany(mappedBy = "user", cascade ={CascadeType.ALL})
     private List<Comentario> coment;
 
-    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
+    @JsonIgnore
+    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Test> tests;
 
 

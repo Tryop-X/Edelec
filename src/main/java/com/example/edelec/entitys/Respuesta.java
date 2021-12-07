@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Data
 @Entity
@@ -20,11 +21,15 @@ public class Respuesta {
     @Column(name = "contenidosRespuestas", nullable = false)
     private String contenidoRespuesta;
 
-    @Column(name = "Selacionado", nullable = false)
+    @Column(name = "Selacionado")
     private Boolean select;
 
     @JsonIgnore
     @ManyToOne
-    @JoinColumn(name = "idPregunta",nullable = false,  foreignKey = @ForeignKey(name = "FK_Respuesta_Pregunta"))
+    @JoinColumn(name = "idPregunta",  foreignKey = @ForeignKey(name = "FK_Respuesta_Pregunta"))
     private Pregunta pregunta;
+
+
+    @OneToMany( cascade = CascadeType.ALL, mappedBy ="idRespuesta" , fetch = FetchType.LAZY)
+    private List<RespuestaCarrera> respuestaCarreraList;
 }

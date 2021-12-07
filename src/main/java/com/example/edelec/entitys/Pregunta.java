@@ -23,9 +23,12 @@ public class Pregunta {
 
     @JsonIgnore
     @ManyToOne
-    @JoinColumn(name = "idTest",nullable = false,  foreignKey = @ForeignKey(name = "FK_Pregunta_Test"))
+    @JoinColumn(name = "idTest",  foreignKey = @ForeignKey(name = "FK_Pregunta_Test"))
     private Test test;
+
 
     @OneToMany(mappedBy = "pregunta", cascade = CascadeType.ALL)
     private List<Respuesta> respuesta;
+
+
 }
