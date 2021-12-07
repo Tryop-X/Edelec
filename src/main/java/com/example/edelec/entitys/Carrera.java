@@ -35,7 +35,7 @@ public class Carrera {
     private String descripcionDeCarrera;
 
     @NotNull
-    @Column(name = "tasasDeEmpleabilidad", nullable = false)
+    @Column(name = "tasas_de_empleabilidad", nullable = false)
     private Float tasaDeEmpleabilidad;
 
     @NotNull
