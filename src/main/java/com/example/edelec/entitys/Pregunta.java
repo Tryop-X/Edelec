@@ -29,6 +29,4 @@ public class Pregunta {
 
     @OneToMany(mappedBy = "pregunta", cascade = CascadeType.ALL)
     private List<Respuesta> respuesta;
-
-
 }

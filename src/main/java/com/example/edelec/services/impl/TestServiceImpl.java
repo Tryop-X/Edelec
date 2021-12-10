@@ -33,6 +33,7 @@ public class TestServiceImpl implements TestService {
         this.respuestaCarreraRespository = respuestaCarreraRespository;
     }
 
+
     @Transactional
     public Test createTest (Test test){
         TestValidator.validate(test);
@@ -65,6 +66,7 @@ public class TestServiceImpl implements TestService {
         return testRepository.findById(idTest).orElseThrow();
     }
 
+
     @Override
     public Test createTest(List<Pregunta> preguntasRespuesta) {
         return null;
@@ -72,29 +74,36 @@ public class TestServiceImpl implements TestService {
 
     @Transactional
     public Test crearTestBase(Test test) {
-        test.setIdTest(1);
         TestValidator.validateBase(test);
+        //test.setIdTest(1);
         Test test1=testRepository.save(test);
         for ( Pregunta pregunta : test.getPreguntas()){
             pregunta.setTest(test1);
             PreguntaValidator.validateBase(pregunta);
             Pregunta pregunta1=preguntaRepository.save(pregunta);
             for(Respuesta respuesta: pregunta.getRespuesta()){
-                respuesta.setPregunta(pregunta1);
                 RespuestaValidator.validateBase(respuesta);
-                Respuesta respuesta1=respuestaRepository.save(respuesta);
-                for(RespuestaCarrera respuestaCarrera: respuesta.getRespuestaCarreraList()){
-                    Carrera carrera=carreraRepository.findById(respuestaCarrera.getIdCarrera().getIdCarrera())
-                            .orElseThrow(()-> new ResourceNotFoundException("No Existe la Carreara: "+respuestaCarrera.getIdCarrera().getIdCarrera()));
-                    respuestaCarrera.setIdRespuesta(respuesta1);
-                    respuestaCarrera.setIdCarrera(carrera);
-                    RespuestaCarrera respuestaCarrera1=respuestaCarreraRespository.save(respuestaCarrera);
-                    respuesta1.getRespuestaCarreraList().add(respuestaCarrera1);
-                }
+                respuesta.setPregunta(pregunta1);
+                respuestaRepository.save(respuesta);
             }
         }
         return test1;
     }
+
+    /*
+    for(RespuestaCarrera respuestaCarrera: respuesta.getRespuestaCarreraList()){
+        Carrera carrera=carreraRepository.findById(respuestaCarrera.getIdCarrera().getIdCarrera())
+        .orElseThrow(()-> new ResourceNotFoundException("No Existe la Carreara: "+respuestaCarrera.getIdCarrera().getIdCarrera()));
+
+     System.out.println();
+                    respuestaCarrera.setIdRespuesta(respuesta1);
+                    respuestaCarrera.setIdCarrera(carrera);
+                    System.out.println(respuestaCarrera);
+                    RespuestaCarrera respuestaCarrera1=respuestaCarreraRespository.save(respuestaCarrera);
+                    respuesta1.getRespuestaCarreraList().add(respuestaCarrera1);
+                }
+    }*/
+
 
     @Override
     public List<Test> ObtenerTestbyUser(String username) {

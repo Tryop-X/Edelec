@@ -30,7 +30,7 @@ public class Test {
     @Column(name = "descripciónes", nullable = false)
     private String description;
 
-
+    @JsonIgnore
     @Column(name = "activado")
     private Boolean activate;
 

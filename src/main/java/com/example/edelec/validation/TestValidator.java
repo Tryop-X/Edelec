@@ -13,7 +13,7 @@ public class TestValidator {
     }
 
     public static void validateBase(Test test){
-        if (test.getUsuario().getIdUsuario()==null){
+        if (test.getDescription().isEmpty()|| test.getDescription()==null){
             throw  new IncorrectResourceRequestException("No tiene usuario del test");
         }
     }
