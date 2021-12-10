@@ -31,25 +31,25 @@ public class CarreraController {
     @GetMapping
     public ResponseEntity<List<Carrera>> getAllCarrera() {
         List<Carrera> carreras =carreraService.getAllCarrera();
-        return new ResponseEntity<>(carreras, HttpStatus.OK);
+        return new ResponseEntity<List<Carrera>>(carreras, HttpStatus.OK);
     }
 
     @GetMapping("/{carreraId}")
     public ResponseEntity<Carrera> getCarreraById(@PathVariable("carreraId") Integer IdCarrera) {
         Carrera carrera =carreraService.getCarreraById(IdCarrera);
-        return new ResponseEntity<>(carrera, HttpStatus.OK);
+        return new ResponseEntity<Carrera>(carrera, HttpStatus.OK);
     }
 
-    @GetMapping("/{nameCarrera}")
+    @GetMapping("/nombre/{nameCarrera}")
     public ResponseEntity<List<Carrera>> getCarreraByName(@PathVariable("nameCarrera") String nameCarrera) {
         List<Carrera> carrera =carreraService.getCarreraByName(nameCarrera);
-        return new ResponseEntity<>(carrera, HttpStatus.OK);
+        return new ResponseEntity<List<Carrera>>(carrera, HttpStatus.OK);
     }
 
     @PutMapping
     public ResponseEntity<Carrera> updateCarrera(@RequestBody Carrera carrera) {
         Carrera carreraActulizar =carreraService.updateCarrera(carrera);
-        return new ResponseEntity<>(carreraActulizar, HttpStatus.OK);
+        return new ResponseEntity<Carrera>(carreraActulizar, HttpStatus.OK);
     }
 
     @DeleteMapping("/{carreraId}")

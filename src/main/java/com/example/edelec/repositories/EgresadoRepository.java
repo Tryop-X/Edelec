@@ -12,7 +12,7 @@ import java.util.List;
 @Repository
 public interface EgresadoRepository extends JpaRepository<Egresado, Integer> {
 
-    //@Query("FROM Egresado e WHERE e.sedeCarrera.idCarrera.nombreCarrera=:nombreCarrera AND e.sedeCarrera.idSede.universidad.name=:nombreUniversidad")
-    //List<Egresado> buscarPornombreCarrera(@Param("nombreCarrera") String nombreCarrera, @Param("nombreUniversidad") String nombreUniversidad);
+    @Query("FROM Egresado e WHERE e.carrera.nombreCarrera=:nombreCarrera AND e.sede.universidad.name=:nombreUniversidad")
+    List<Egresado> buscarPornombreCarrera(@Param("nombreCarrera") String nombreCarrera, @Param("nombreUniversidad") String nombreUniversidad);
 
 }

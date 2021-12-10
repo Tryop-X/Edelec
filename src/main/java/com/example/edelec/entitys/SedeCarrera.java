@@ -22,6 +22,8 @@ public class SedeCarrera{
     @Id
     private Carrera idCarrera;
 
+
+
     @Column(name = "mallas", nullable = true)
     private String mallasUniversitarias;//Noes string es una imagen
 

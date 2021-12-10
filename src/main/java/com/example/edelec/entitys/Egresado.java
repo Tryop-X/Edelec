@@ -2,11 +2,8 @@ package com.example.edelec.entitys;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.format.annotation.DateTimeFormat;
-
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "egresado")
@@ -26,6 +23,13 @@ public class Egresado {
     //@ManyToOne
     //@JoinColumn(name="id_sede_carrera", nullable = false, foreignKey = @ForeignKey(name="fk_sede_carrera"))
     //private SedeCarrera sedeCarrera;
+    @ManyToOne
+    @JoinColumn(name="id_sede", nullable = false, foreignKey = @ForeignKey(name="FK_sede"))
+    private Sede sede;
+
+    @ManyToOne
+    @JoinColumn(name="id_carrera", nullable = false, foreignKey = @ForeignKey(name="FK_carrera"))
+    private Carrera carrera;
 
     @NotNull
     @Column(name = "curriculum")

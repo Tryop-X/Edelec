@@ -2,6 +2,7 @@ package com.example.edelec.controllers;
 
 
 import com.example.edelec.entitys.Egresado;
+import com.example.edelec.entitys.Sede;
 import com.example.edelec.services.EgresadoService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -49,7 +50,5 @@ public class EgresadoController {
         egresadoService.deleteEgresado(idEgresado);
         return  new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
     }
-
-
 
 }
