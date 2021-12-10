@@ -6,14 +6,6 @@ import com.example.edelec.exception.IncorrectResourceRequestException;
 
 public class PreguntaValidator {
     public static void validate(Pregunta pregunta){
-        if(pregunta.getContenido()==null || pregunta.getContenido().trim().isEmpty()){
-            throw  new IncorrectResourceRequestException("Esta pregunta no tiene description");
-        }
-
-        if(pregunta.getRespuesta()==null || pregunta.getRespuesta().isEmpty()){
-            throw  new IncorrectResourceRequestException("Esta pregunta no tiene respuestas");
-        }
-
         int count=0;
         for(Respuesta respuesta: pregunta.getRespuesta()){
             if (respuesta.getSelect()==true){
@@ -22,6 +14,14 @@ public class PreguntaValidator {
         }
         if (count<1){
             throw  new IncorrectResourceRequestException("Esta pregunta no se respondio");
+        }
+    }
+    public static void validateBase(Pregunta pregunta){
+        if(pregunta.getContenido()==null || pregunta.getContenido().trim().isEmpty()){
+            throw  new IncorrectResourceRequestException("Esta pregunta no tiene description");
+        }
+        if(pregunta.getRespuesta()==null || pregunta.getRespuesta().isEmpty()){
+            throw  new IncorrectResourceRequestException("Esta pregunta no tiene respuestas");
         }
     }
 }

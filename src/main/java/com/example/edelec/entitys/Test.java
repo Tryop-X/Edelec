@@ -30,9 +30,13 @@ public class Test {
     @Column(name = "descripciónes", nullable = false)
     private String description;
 
+
+    @Column(name = "activado")
+    private Boolean activate;
+
     @JsonIgnore
     @JsonFormat(pattern = "dd/MM/yyyy")
-    @Column(name = "fechas", nullable = false, updatable = false)
+    @Column(name = "fechas", updatable = false)
     private LocalDate fecha;
 
     @ManyToOne

@@ -16,6 +16,7 @@ import javax.persistence.*;
 @Getter
 @Setter
 public class RespuestaCarrera {
+
     @JsonIgnore
     @Id
     private Respuesta idRespuesta;

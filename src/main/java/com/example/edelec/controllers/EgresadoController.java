@@ -1,9 +1,14 @@
 package com.example.edelec.controllers;
 
 
+import com.example.edelec.entitys.Egresado;
 import com.example.edelec.services.EgresadoService;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
+import java.util.List;
 
 @RestController
 @RequestMapping("/egresado")
@@ -27,11 +32,11 @@ public class EgresadoController {
         return  new ResponseEntity<List<Egresado>>(egresados, HttpStatus.OK);
     }
 
-    @GetMapping("/busca_universidad_carrera/{nombreUniversidad}/{nombreCarrera}")
-    public ResponseEntity<List<Egresado>> GetEgresadoByUniversdidadCarrera(@PathVariable("nombreUniversidad") String nombreUniversidad, @PathVariable("nombreCarrera") String nombreCarrera) {
-        List<Egresado> egresados =egresadoService.getEgresadoUniversidadCarrera(nombreUniversidad, nombreCarrera);
-        return  new ResponseEntity<List<Egresado>>(egresados, HttpStatus.OK);
-    }
+    //@GetMapping("/busca_universidad_carrera/{nombreUniversidad}/{nombreCarrera}")
+    //public ResponseEntity<List<Egresado>> GetEgresadoByUniversdidadCarrera(@PathVariable("nombreUniversidad") String nombreUniversidad, @PathVariable("nombreCarrera") String nombreCarrera) {
+    //    List<Egresado> egresados =egresadoService.getEgresadoUniversidadCarrera(nombreUniversidad, nombreCarrera);
+    //    return  new ResponseEntity<List<Egresado>>(egresados, HttpStatus.OK);
+    //}
 
     @PutMapping
     public ResponseEntity<Egresado> updateEgresado(@Valid @RequestBody Egresado egresado){

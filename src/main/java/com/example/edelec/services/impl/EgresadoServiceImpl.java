@@ -27,10 +27,10 @@ public class EgresadoServiceImpl implements EgresadoService {
         return egresadoRepository.findAll();
     }
 
-    @Override
-    public List<Egresado> getEgresadoUniversidadCarrera(String nameUniversidad, String nameCarrera) {
-        return egresadoRepository.buscarPornombreCarrera(nameCarrera, nameUniversidad);
-    }
+    //@Override
+    //public List<Egresado> getEgresadoUniversidadCarrera(String nameUniversidad, String nameCarrera) {
+    //    return egresadoRepository.buscarPornombreCarrera(nameCarrera, nameUniversidad);
+    //}
 
     @Override
     public Egresado updateEgresado(Egresado egresado) {

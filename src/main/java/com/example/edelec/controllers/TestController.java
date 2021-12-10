@@ -26,10 +26,10 @@ public class TestController {
         this.testService = testService;
     }
 
-    @PostMapping
-    public ResponseEntity<WrapperResponse<Test>> createTest(@RequestBody Test test) {
+    @PostMapping("/base")
+    public ResponseEntity<WrapperResponse<Test>> createTestBase(@RequestBody Test test) {
         System.out.println("creado"+test);
-        Test testNew =testService.createTest(test);
+        Test testNew =testService.crearTestBase(test);
         return  new WrapperResponse<Test>(true,"success",testNew).createResponse(HttpStatus.CREATED);
     }
 
@@ -44,9 +44,9 @@ public class TestController {
         return new ResponseEntity<>(test, HttpStatus.OK);
     }
 
-    @PutMapping
+    @PutMapping("/base")
     public ResponseEntity<Test> ReplaceTestBase(@RequestBody Test test) {
-        Test testactualizar =testService.replaceTestBase(test) ;
+        Test testactualizar =testService.crearTestBase(test) ;
         return new ResponseEntity<>(testactualizar, HttpStatus.OK);
     }
 

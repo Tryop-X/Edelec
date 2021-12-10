@@ -1,10 +1,7 @@
 package com.example.edelec.services.impl;
 
 
-import com.example.edelec.entitys.Pregunta;
-import com.example.edelec.entitys.Respuesta;
-import com.example.edelec.entitys.Test;
-import com.example.edelec.entitys.Usuario;
+import com.example.edelec.entitys.*;
 import com.example.edelec.exception.ResourceNotFoundException;
 import com.example.edelec.repositories.*;
 import com.example.edelec.services.TestService;
@@ -25,13 +22,15 @@ public class TestServiceImpl implements TestService {
     private final PreguntaRepository preguntaRepository;
     private final RespuestaRepository respuestaRepository;
     private final CarreraRepository carreraRepository;
+    private final RespuestaCarreraRespository respuestaCarreraRespository;
 
-    public TestServiceImpl(TestRepository testRepository, UsuarioRepository usuarioRepository, PreguntaRepository preguntaRepository, RespuestaRepository respuestaRepository, CarreraRepository carreraRepository) {
+    public TestServiceImpl(TestRepository testRepository, UsuarioRepository usuarioRepository, PreguntaRepository preguntaRepository, RespuestaRepository respuestaRepository, CarreraRepository carreraRepository, RespuestaCarreraRespository respuestaCarreraRespository) {
         this.testRepository = testRepository;
         this.usuarioRepository = usuarioRepository;
         this.preguntaRepository = preguntaRepository;
         this.respuestaRepository = respuestaRepository;
         this.carreraRepository = carreraRepository;
+        this.respuestaCarreraRespository = respuestaCarreraRespository;
     }
 
     @Transactional
@@ -55,6 +54,7 @@ public class TestServiceImpl implements TestService {
         return test1;
     }
 
+
     @Override
     public List<Test> getAllTest() {
         return testRepository.findAll();
@@ -65,23 +65,53 @@ public class TestServiceImpl implements TestService {
         return testRepository.findById(idTest).orElseThrow();
     }
 
-    public Test replaceTestBase(Test test) {
+    @Override
+    public Test createTest(List<Pregunta> preguntasRespuesta) {
+        return null;
+    }
+
+    @Transactional
+    public Test crearTestBase(Test test) {
         test.setIdTest(1);
-        TestValidator.validate(test);
-        test.setFecha(LocalDate.now());
+        TestValidator.validateBase(test);
         Test test1=testRepository.save(test);
         for ( Pregunta pregunta : test.getPreguntas()){
             pregunta.setTest(test1);
-            PreguntaValidator.validate(pregunta);
+            PreguntaValidator.validateBase(pregunta);
             Pregunta pregunta1=preguntaRepository.save(pregunta);
             for(Respuesta respuesta: pregunta.getRespuesta()){
                 respuesta.setPregunta(pregunta1);
-                RespuestaValidator.validate(respuesta);
-                respuestaRepository.save(respuesta);
+                RespuestaValidator.validateBase(respuesta);
+                Respuesta respuesta1=respuestaRepository.save(respuesta);
+                for(RespuestaCarrera respuestaCarrera: respuesta.getRespuestaCarreraList()){
+                    Carrera carrera=carreraRepository.findById(respuestaCarrera.getIdCarrera().getIdCarrera())
+                            .orElseThrow(()-> new ResourceNotFoundException("No Existe la Carreara: "+respuestaCarrera.getIdCarrera().getIdCarrera()));
+                    respuestaCarrera.setIdRespuesta(respuesta1);
+                    respuestaCarrera.setIdCarrera(carrera);
+                    RespuestaCarrera respuestaCarrera1=respuestaCarreraRespository.save(respuestaCarrera);
+                    respuesta1.getRespuestaCarreraList().add(respuestaCarrera1);
+                }
             }
         }
         return test1;
     }
+
+    @Override
+    public List<Test> ObtenerTestbyUser(String username) {
+        return null;
+    }
+
+    @Override
+    public List<String> ObtenerResultados(Test test) {
+        return null;
+    }
+
+
+    public Test getTestBase() {
+        return testRepository.findById(1)
+                .orElseThrow(()-> new ResourceNotFoundException("No ha creado el test base"));
+    }
+
 
     public void deleteTest(Integer IdTest){
         testRepository.deleteById(IdTest);

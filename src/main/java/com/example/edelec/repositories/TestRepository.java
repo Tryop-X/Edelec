@@ -13,12 +13,7 @@ public interface TestRepository extends JpaRepository<Test, Integer> {
     @Query("select t FROM  Test t WHERE t.idTest=:idTest")
     Test getById(@Param("idTest") String idTest);
 
-    @Query("select t FROM  Test t WHERE t.description=:description")
-    Test save(@Param("description") String description);
-
-    @Query("select t FROM  Test t WHERE t.idTest=:idTest")
-    List<Test> getAllByIdTest(@Param("idTest") String idTest);
-
-
+    @Query("select t FROM  Test t WHERE t.usuario.userName=:usernaame")
+    List<Test> getTestByUser(@Param("usernaame") String username);
 
 }

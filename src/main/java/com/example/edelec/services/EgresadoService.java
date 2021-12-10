@@ -8,7 +8,7 @@ import java.util.List;
 public interface EgresadoService {
     Egresado createEgresado(Egresado carrera);
     List<Egresado> getAllEgresado();
-    List<Egresado> getEgresadoUniversidadCarrera(String nameUniversidad, String nameCarrera);
+    //List<Egresado> getEgresadoUniversidadCarrera(String nameUniversidad, String nameCarrera);
     Egresado updateEgresado(Egresado carrera);
     void deleteEgresado(Integer IdCarrera);
 }
