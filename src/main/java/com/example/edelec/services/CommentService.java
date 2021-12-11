@@ -1,7 +1,7 @@
 package com.example.edelec.services;
 
 
-import com.example.edelec.entities.Comments;
+import com.example.edelec.entitys.Comments;
 
 import java.util.List;
 
