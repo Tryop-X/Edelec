@@ -44,13 +44,13 @@ public class TestController {
         return new ResponseEntity<>(test, HttpStatus.OK);
     }
 
-    /*@PutMapping("/base")
+    @PutMapping("/base")
     public ResponseEntity<Test> ReplaceTestBase(@RequestBody Test test) {
         System.out.println("creado"+test);
         Test testactualizar =testService.crearTestBase(test) ;
         return new ResponseEntity<>(testactualizar, HttpStatus.OK);
     }
-*/
+
     @DeleteMapping("/{idTest}")
     public ResponseEntity<Void> deleteTest(@PathVariable("idTest") Integer idTest){
         testService.deleteTest(idTest);

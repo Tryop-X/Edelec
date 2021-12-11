@@ -22,15 +22,13 @@ public class TestServiceImpl implements TestService {
     private final PreguntaRepository preguntaRepository;
     private final RespuestaRepository respuestaRepository;
     private final CarreraRepository carreraRepository;
-    private final RespuestaCarreraRespository respuestaCarreraRespository;
 
-    public TestServiceImpl(TestRepository testRepository, UsuarioRepository usuarioRepository, PreguntaRepository preguntaRepository, RespuestaRepository respuestaRepository, CarreraRepository carreraRepository, RespuestaCarreraRespository respuestaCarreraRespository) {
+    public TestServiceImpl(TestRepository testRepository, UsuarioRepository usuarioRepository, PreguntaRepository preguntaRepository, RespuestaRepository respuestaRepository, CarreraRepository carreraRepository) {
         this.testRepository = testRepository;
         this.usuarioRepository = usuarioRepository;
         this.preguntaRepository = preguntaRepository;
         this.respuestaRepository = respuestaRepository;
         this.carreraRepository = carreraRepository;
-        this.respuestaCarreraRespository = respuestaCarreraRespository;
     }
 
 
@@ -63,7 +61,8 @@ public class TestServiceImpl implements TestService {
 
     @Override
     public Test getTestById(Integer idTest) {
-        return testRepository.findById(idTest).orElseThrow();
+        return testRepository.findById(idTest)
+                .orElseThrow(()-> new ResourceNotFoundException("No Existe el test: "+idTest));
     }
 
 
@@ -74,8 +73,8 @@ public class TestServiceImpl implements TestService {
 
     @Transactional
     public Test crearTestBase(Test test) {
+        test.setIdTest(1);
         TestValidator.validateBase(test);
-        //test.setIdTest(1);
         Test test1=testRepository.save(test);
         for ( Pregunta pregunta : test.getPreguntas()){
             pregunta.setTest(test1);
@@ -83,27 +82,16 @@ public class TestServiceImpl implements TestService {
             Pregunta pregunta1=preguntaRepository.save(pregunta);
             for(Respuesta respuesta: pregunta.getRespuesta()){
                 RespuestaValidator.validateBase(respuesta);
+                Carrera carrera= carreraRepository.findById(respuesta.getCarrera().getIdCarrera())
+                        .orElseThrow(()-> new ResourceNotFoundException("No Existe la carrera: "+respuesta.getCarrera().getIdCarrera()));
+                respuesta.setCarrera(carrera);
                 respuesta.setPregunta(pregunta1);
-                respuestaRepository.save(respuesta);
+                Respuesta respuesta1 = respuestaRepository.save(respuesta);
             }
         }
+
         return test1;
     }
-
-    /*
-    for(RespuestaCarrera respuestaCarrera: respuesta.getRespuestaCarreraList()){
-        Carrera carrera=carreraRepository.findById(respuestaCarrera.getIdCarrera().getIdCarrera())
-        .orElseThrow(()-> new ResourceNotFoundException("No Existe la Carreara: "+respuestaCarrera.getIdCarrera().getIdCarrera()));
-
-     System.out.println();
-                    respuestaCarrera.setIdRespuesta(respuesta1);
-                    respuestaCarrera.setIdCarrera(carrera);
-                    System.out.println(respuestaCarrera);
-                    RespuestaCarrera respuestaCarrera1=respuestaCarreraRespository.save(respuestaCarrera);
-                    respuesta1.getRespuestaCarreraList().add(respuestaCarrera1);
-                }
-    }*/
-
 
     @Override
     public List<Test> ObtenerTestbyUser(String username) {
@@ -123,7 +111,11 @@ public class TestServiceImpl implements TestService {
 
 
     public void deleteTest(Integer IdTest){
-        testRepository.deleteById(IdTest);
+        if(IdTest==1){
+        }
+        else{
+            testRepository.deleteById(IdTest);
+        }
     }
 
 }

@@ -30,6 +30,7 @@ public class Respuesta {
     private Pregunta pregunta;
 
 
-    @OneToMany( cascade = CascadeType.ALL, mappedBy ="idRespuesta" , fetch = FetchType.LAZY)
-    private List<RespuestaCarrera> respuestaCarreraList;
+    @ManyToOne
+    @JoinColumn(name = "idCarrera",  foreignKey = @ForeignKey(name = "FK_Respuesta_Carrera"))
+    private Carrera carrera;
 }

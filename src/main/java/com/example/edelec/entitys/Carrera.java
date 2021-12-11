@@ -31,7 +31,7 @@ public class Carrera {
 
     @NotNull
     @Size(min = 10, max = 300)
-    @Column(name = "descripciones", nullable = false, unique = true)
+    @Column(name = "descripciones", nullable = false)
     private String descripcionDeCarrera;
 
     @NotNull

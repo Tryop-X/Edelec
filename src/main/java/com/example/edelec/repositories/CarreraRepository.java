@@ -15,6 +15,9 @@ public interface CarreraRepository extends JpaRepository<Carrera, Integer> {
     @Query("Select c FROM  Carrera c WHERE c.nombreCarrera=:nombre")
     List<Carrera> buscarCarrera(@Param("nombre") String nombreCarrera);
 
+    @Query("Select c FROM  Carrera c WHERE c.nombreCarrera=:nombre")
+    Carrera buscarUna(@Param("nombre") String nombreCarrera);
+
     @Query("Select c FROM Carrera c WHERE c.descripcionDeCarrera=:name")
     List<Carrera> BuscarDescripcionCarrera(@Param("name") String name);
 
