@@ -1,6 +1,7 @@
 package com.example.edelec.controllers;
 
 
+import com.example.edelec.entitys.Carrera;
 import com.example.edelec.entitys.Pregunta;
 import com.example.edelec.entitys.Respuesta;
 import com.example.edelec.entitys.Test;
@@ -72,5 +73,16 @@ public class TestController {
     public ResponseEntity<WrapperResponse<List<Pregunta>>> getPreguntas(){
         List<Pregunta> preguntas=testService.getPreguntasBase();
         return new WrapperResponse<List<Pregunta>>(true,"success",preguntas).createResponse(HttpStatus.OK);
+    }
+
+    @GetMapping("/resultados/{id}")
+    public ResponseEntity<WrapperResponse<String>> getResults(@PathVariable("id") Integer id){
+        String descrition=testService.obtenerResultados(id);
+        return new WrapperResponse<String>(true,"success",descrition).createResponse(HttpStatus.OK);
+    }
+    @GetMapping("/relacionado/{id}")
+    public ResponseEntity<WrapperResponse<List<Carrera>>> getRelaciones(@PathVariable("id") Integer id){
+        List<Carrera> carreras=testService.carrerasRelacionadas(id);
+        return new WrapperResponse<List<Carrera>>(true,"success",carreras).createResponse(HttpStatus.OK);
     }
 }

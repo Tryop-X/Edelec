@@ -9,8 +9,8 @@ public interface TestService {
     Test crearTestBase(Test test);
     Test getTestById(Integer IdTest);
     List<Test> ObtenerTestbyUser(String username);
-    String ObtenerResultados(Test test);
-    List<Carrera> carrerasRelacionadas(Test test);
+    String obtenerResultados(Integer id);
+    List<Carrera> carrerasRelacionadas(Integer id);
     List<Pregunta> getPreguntasBase();
     Test replaceTestBase(Test test);
 

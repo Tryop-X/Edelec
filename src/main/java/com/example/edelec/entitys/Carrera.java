@@ -1,6 +1,7 @@
 package com.example.edelec.entitys;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -9,6 +10,7 @@ import lombok.Setter;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.util.List;
 
 
 @Entity
@@ -23,11 +25,13 @@ public class Carrera {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idCarrera;
 
-
     @NotNull
     @Size(min = 5,max = 30)
     @Column(name = "nombres", nullable = false, unique = true)
     private String nombreCarrera;
+
+    @Column(name = "perfiles", nullable = false)
+    private String perfil;
 
     @NotNull
     @Size(min = 10, max = 300)
@@ -41,4 +45,9 @@ public class Carrera {
     @NotNull
     @Column(name = "salariosPromedios", nullable = false)
     private Integer salarioPromedio;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "carrera",cascade ={CascadeType.ALL})
+    private List<Respuesta> respuestas;
+
 }

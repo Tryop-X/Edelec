@@ -40,7 +40,6 @@ public class Comentario {
     private Usuario user;
 
     @ManyToOne
-    @JoinColumn(name = "idUniversidades",nullable = false,  foreignKey = @ForeignKey(name = "FK_Universidada_Comentario"))
+    @JoinColumn(name = "idUniversidades",nullable = false,  foreignKey = @ForeignKey(name ="FK_Universidada_Comentario"))
     private Universidad universidad;
-
 }
