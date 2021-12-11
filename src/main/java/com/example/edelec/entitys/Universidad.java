@@ -43,7 +43,7 @@ public class Universidad {
 
     @OneToMany(mappedBy = "universidad",cascade ={CascadeType.ALL})
     private List<Sede> sede;
-
+    @JsonIgnore
     @OneToMany(mappedBy = "universidad",cascade ={CascadeType.ALL})
     private List<Comments> coments;
 
