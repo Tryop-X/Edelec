@@ -1,5 +1,6 @@
 package com.example.edelec.entitys;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -27,6 +28,7 @@ public class Comments {
     @NotNull
     @DateTimeFormat(pattern = "yyyy-MM-dd hh:mm")
     @Column(name = "Fechas", nullable = false)
+    @JsonIgnore
     private LocalDateTime tiempo;
 
     @NotNull
