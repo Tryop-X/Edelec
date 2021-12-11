@@ -19,7 +19,7 @@ import javax.validation.constraints.Size;
 @Getter
 @Setter
 
-public class Comentario {
+public class Comments {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idComentario;
