@@ -42,4 +42,7 @@ public class Comentario {
     @ManyToOne
     @JoinColumn(name = "idUniversidades",nullable = false,  foreignKey = @ForeignKey(name ="FK_Universidada_Comentario"))
     private Universidad universidad;
+
+    @NotNull
+    private int votes;
 }
