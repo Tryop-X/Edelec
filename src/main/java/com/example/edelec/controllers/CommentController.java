@@ -1,7 +1,7 @@
-package com.example.demo.controllers;
+package com.example.edelec.controllers;
 
-import com.example.demo.entities.Comments;
-import com.example.demo.services.CommentService;
+import com.example.edelec.entities.Comments;
+import com.example.edelec.services.CommentService;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
