@@ -8,7 +8,7 @@ public class PreguntaValidator {
     public static void validate(Pregunta pregunta){
         int count=0;
         for(Respuesta respuesta: pregunta.getRespuesta()){
-            if (respuesta.getSelect()==true){
+            if (respuesta.getSelect()){
                 count=count+1;
             }
         }

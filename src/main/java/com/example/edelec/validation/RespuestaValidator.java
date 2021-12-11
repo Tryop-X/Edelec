@@ -15,6 +15,9 @@ public class RespuestaValidator {
         if (respuesta.getSelect()==null){
             throw  new IncorrectResourceRequestException("Esta pregunta se hiso");
         }
+        if (respuesta.getCarrera()==null){
+            throw  new IncorrectResourceRequestException("No tiene carreras realcionadas");
+        }
     }
 
 }

@@ -27,7 +27,7 @@ public class Test {
 
     @NotNull
     @Size(min = 20)
-    @Column(name = "descripciónes", nullable = false)
+    @Column(name = "descripciónes")
     private String description;
 
     @JsonIgnore

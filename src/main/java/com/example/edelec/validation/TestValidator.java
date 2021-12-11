@@ -13,8 +13,8 @@ public class TestValidator {
     }
 
     public static void validateBase(Test test){
-        if (test.getDescription().isEmpty()|| test.getDescription()==null){
-            throw  new IncorrectResourceRequestException("No tiene usuario del test");
+        if (test.getPreguntas().isEmpty() || test.getPreguntas()==null){
+            throw new IncorrectResourceRequestException("No tiene preguntas");
         }
     }
 
