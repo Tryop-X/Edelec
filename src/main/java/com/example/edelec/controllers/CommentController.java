@@ -18,6 +18,12 @@ public class CommentController {
         this.commentService = commentService;
     }
 
+    @RequestMapping("/{id}")
+    public ResponseEntity<List<Comments>>  getAllCommentsById(@PathVariable Integer id){
+        List<Comments> comments= commentService.getCommentsByUniversidadId(id);
+        return new ResponseEntity<>(comments, HttpStatus.OK);
+    }
+
     @PostMapping
     public ResponseEntity<Comments> createComment(@RequestBody Comments comment){
         Comments commentNew =commentService.createComment(comment);
