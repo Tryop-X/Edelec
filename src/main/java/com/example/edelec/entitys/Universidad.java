@@ -45,7 +45,7 @@ public class Universidad {
     private List<Sede> sede;
 
     @OneToMany(mappedBy = "universidad",cascade ={CascadeType.ALL})
-    private List<Comentario> coments;
+    private List<Comments> coments;
 
 
 }
