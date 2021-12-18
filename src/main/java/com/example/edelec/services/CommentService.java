@@ -11,5 +11,6 @@ public interface CommentService {
     Comments updateComment(Comments comment);
     List<Comments> listComments();
     List<Comments> getCommentsByUniversidadId(Integer Id);
+    Comments deleteComment(Integer Id);
 
 }
