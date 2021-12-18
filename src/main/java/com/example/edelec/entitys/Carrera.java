@@ -33,6 +33,8 @@ public class Carrera {
     @Column(name = "perfiles", nullable = false)
     private String perfil;
 
+
+
     @NotNull
     @Size(min = 10, max = 300)
     @Column(name = "descripciones", nullable = false)
@@ -49,5 +51,6 @@ public class Carrera {
     @JsonIgnore
     @OneToMany(mappedBy = "carrera",cascade ={CascadeType.ALL})
     private List<Respuesta> respuestas;
+
 
 }

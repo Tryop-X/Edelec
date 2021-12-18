@@ -10,6 +10,6 @@ public interface CommentService {
     Comments createComment(Comments comment);
     Comments updateComment(Comments comment);
     List<Comments> listComments();
+    List<Comments> getCommentsByUniversidadId(Integer Id);
 
 }
-

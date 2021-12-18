@@ -53,8 +53,8 @@ public class UsuarioController {
 
     @PostMapping("login")
     public ResponseEntity<Integer> login(@RequestBody Usuario usuario) {
-        Integer integer=usuarioService.Login(usuario);
-        return new ResponseEntity<>(integer,HttpStatus.OK);
+        Integer loguser=usuarioService.Login(usuario);
+        return new ResponseEntity<>(loguser,HttpStatus.OK);
     }
 
     @PutMapping

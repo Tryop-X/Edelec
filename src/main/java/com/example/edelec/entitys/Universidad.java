@@ -1,6 +1,6 @@
 package com.example.edelec.entitys;
 
-
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -43,7 +43,7 @@ public class Universidad {
 
     @OneToMany(mappedBy = "universidad",cascade ={CascadeType.ALL})
     private List<Sede> sede;
-
+    @JsonIgnore
     @OneToMany(mappedBy = "universidad",cascade ={CascadeType.ALL})
     private List<Comments> coments;
 

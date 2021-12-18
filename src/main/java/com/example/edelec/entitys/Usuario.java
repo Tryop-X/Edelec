@@ -32,17 +32,17 @@ public class Usuario {
     private Integer idUsuario;
 
     @NotNull
-    @Size(min = 6, max = 30, message = "Nombre no valido")
+    @Size(min = 4, max = 30, message = "Nombre no valido")
     @Column(name = "usuarios", nullable = false , unique = true)
     private String userName;
 
     @NotNull
-    @Size(min = 6, max = 30, message = "Nombre no valido")
+    @Size(min = 4, max = 30, message = "Nombre no valido")
     @Column(name = "nombres", nullable = false)
     private String nombre;
 
     @NotNull
-    @Size(min = 6, max = 30, message = "Nombre no valido")
+    @Size(min = 4, max = 30, message = "Nombre no valido")
     @Column(name = "apellidos", nullable = false)
     private String apellido;
 
@@ -52,7 +52,7 @@ public class Usuario {
     private String correo;
 
     @NotNull
-    @Size(min = 8,max = 16, message = "Contraseña no valida")
+    @Size(min = 6,max = 16, message = "Contraseña no valida")
     @Column(name = "contraseñas", nullable = false)
     private String contrasena;
 
