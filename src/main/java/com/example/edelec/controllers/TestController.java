@@ -25,7 +25,11 @@ public class TestController {
         this.testService = testService;
     }
 
-
+    @GetMapping("/desactivar/{id}")
+    public ResponseEntity<WrapperResponse<Test>> desactiva(@PathVariable("id") Integer id){
+        Test test= testService.desactivarTets(id);
+        return  new WrapperResponse<Test>(true,"success",test).createResponse(HttpStatus.OK);
+    }
 
     @PostMapping
     public ResponseEntity<WrapperResponse<Test>> createTest(@RequestBody Test test) {

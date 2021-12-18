@@ -90,6 +90,13 @@ public class TestServiceImpl implements TestService {
         return testRepository.save(test);
     }
 
+    @Override
+    public Test desactivarTets(Integer id){
+        Test test=getTestById(id);
+        test.setActivate(false);
+        return testRepository.save(test);
+    }
+
 
     @Override
     public List<Test> ObtenerTestbyUser(String username) {

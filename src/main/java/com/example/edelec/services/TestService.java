@@ -11,6 +11,7 @@ public interface TestService {
     List<Test> ObtenerTestbyUser(String username);
     String obtenerResultados(Integer id);
     List<Carrera> carrerasRelacionadas(Integer id);
+    public Test desactivarTets(Integer id);
 
     void deleteTest(Integer IdTest);
     List<Test> getAllTest();

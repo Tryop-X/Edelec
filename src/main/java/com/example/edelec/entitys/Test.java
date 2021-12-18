@@ -39,7 +39,7 @@ public class Test {
     @JoinColumn(name = "idUsuario",  foreignKey = @ForeignKey(name = "FK_Test_Usuario"))
     private Usuario usuario;
 
-    @OneToMany(mappedBy = "test", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "test")
     private List<Pregunta> preguntas;
 }
 

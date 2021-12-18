@@ -32,6 +32,6 @@ public class Pregunta {
     private Plantilla plantilla;
 
 
-    @OneToMany(mappedBy = "pregunta", cascade = CascadeType.REMOVE)
+    @OneToMany(mappedBy = "pregunta")
     private List<Respuesta> respuesta;
 }
