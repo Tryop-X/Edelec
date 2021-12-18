@@ -61,6 +61,13 @@ private final UniversidadRepository universidadRepository;
         List<Comments> comments=commentRepository.findByUniversidadIdUniversidad(Id);
         return comments;
     }
+    @Override
+    public Comments deleteComment(Integer id) {
+        Comments  commentFromDb =commentRepository.findById(id)
+                .orElseThrow(()-> new ResourceNotFoundException("No existe el comentario a borrar"));
+        commentRepository.deleteById(commentFromDb.getIdComentario());
+        return commentFromDb;
+    }
 }
 
 
