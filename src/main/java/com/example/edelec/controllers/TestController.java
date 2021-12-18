@@ -3,7 +3,6 @@ package com.example.edelec.controllers;
 
 import com.example.edelec.entitys.Carrera;
 import com.example.edelec.entitys.Pregunta;
-import com.example.edelec.entitys.Respuesta;
 import com.example.edelec.entitys.Test;
 
 
@@ -26,11 +25,7 @@ public class TestController {
         this.testService = testService;
     }
 
-    @PostMapping("/base")
-    public ResponseEntity<WrapperResponse<Test>> createTestBase(@RequestBody Test test) {
-        Test testNew =testService.crearTestBase(test);
-        return  new WrapperResponse<Test>(true,"success",testNew).createResponse(HttpStatus.CREATED);
-    }
+
 
     @PostMapping
     public ResponseEntity<WrapperResponse<Test>> createTest(@RequestBody Test test) {
@@ -39,9 +34,9 @@ public class TestController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Test>> getAllTest() {
-        List<Test> test =testService.getAllTest();
-        return new ResponseEntity<>(test, HttpStatus.OK);
+    public ResponseEntity<WrapperResponse<List<Test>>> getAllTest() {
+        List<Test> tests =testService.getAllTest();
+        return  new WrapperResponse<List<Test>>(true,"success",tests).createResponse(HttpStatus.OK);
     }
 
     @GetMapping("/user/{username}")
@@ -56,24 +51,13 @@ public class TestController {
         return  new WrapperResponse<Test>(true,"success",test).createResponse(HttpStatus.OK);
     }
 
-    @PutMapping("/base")
-    public ResponseEntity<WrapperResponse<Test>> ReplaceTestBase(@RequestBody Test test) {
-        System.out.println("autilizado: "+test);
-        Test testactualizar =testService.replaceTestBase(test) ;
-        return  new WrapperResponse<Test>(true,"success",testactualizar).createResponse(HttpStatus.OK);
-    }
 
     @DeleteMapping("/{idTest}")
-    public ResponseEntity<Void> deleteTest(@PathVariable("idTest") Integer idTest){
+    public ResponseEntity<WrapperResponse<Void>> deleteTest(@PathVariable("idTest") Integer idTest){
         testService.deleteTest(idTest);
-        return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
+        return new WrapperResponse<Void>(true,"success",null).createResponse(HttpStatus.NO_CONTENT);
     }
 
-    @GetMapping("/preguntas")
-    public ResponseEntity<WrapperResponse<List<Pregunta>>> getPreguntas(){
-        List<Pregunta> preguntas=testService.getPreguntasBase();
-        return new WrapperResponse<List<Pregunta>>(true,"success",preguntas).createResponse(HttpStatus.OK);
-    }
 
     @GetMapping("/resultados/{id}")
     public ResponseEntity<WrapperResponse<String>> getResults(@PathVariable("id") Integer id){

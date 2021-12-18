@@ -1,6 +1,5 @@
 package com.example.edelec.services.impl;
 
-import com.example.edelec.entitys.Egresado;
 import com.example.edelec.entitys.Sede;
 import com.example.edelec.repositories.SedeRepository;
 import com.example.edelec.services.SedeService;

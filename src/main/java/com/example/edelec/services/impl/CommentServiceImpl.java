@@ -23,12 +23,12 @@ private final CommentRepository commentRepository;
 
     @Override
     public Comments updateComment(Comments comment) {
-           Comments  commentFromDb=commentRepository.findById(comment.getId())
+           Comments commentFromDb = commentRepository.findById(comment.getIdComentario())
                    .orElse(new Comments());
-           commentFromDb.setContent(comment.getContent());
+           commentFromDb.setContenido(comment.getContenido());
            commentFromDb.setVotes(comment.getVotes());
-           commentFromDb.setDate(comment.getDate());
-           commentFromDb.setUsuario(comment.getUsuario());
+           commentFromDb.setTiempo(comment.getTiempo());
+           commentFromDb.setUser(comment.getUser());
            return commentRepository.save(commentFromDb);
 
     }

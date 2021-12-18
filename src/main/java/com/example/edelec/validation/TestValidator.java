@@ -9,10 +9,8 @@ public class TestValidator {
 
         if (test.getUsuario().getIdUsuario()==null){
             throw  new IncorrectResourceRequestException("No tiene usuario del test");
-        }
-    }
 
-    public static void validateBase(Test test){
+        }
         if (test.getPreguntas().isEmpty() || test.getPreguntas()==null){
             throw new IncorrectResourceRequestException("No tiene preguntas");
         }

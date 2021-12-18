@@ -9,15 +9,22 @@ public class RespuestaValidator {
         if(respuesta.getContenidoRespuesta()==null || respuesta.getContenidoRespuesta().trim().isEmpty()){
             throw  new IncorrectResourceRequestException("Esta pregunta no tiene description");
         }
+        if (respuesta.getCarrera()==null){
+            throw  new IncorrectResourceRequestException("No tiene carreras realcionadas");
+        }
     }
 
     public static void validate(Respuesta respuesta){
         if (respuesta.getSelect()==null){
             throw  new IncorrectResourceRequestException("Esta pregunta se hiso");
         }
+        if(respuesta.getContenidoRespuesta()==null || respuesta.getContenidoRespuesta().trim().isEmpty()){
+            throw  new IncorrectResourceRequestException("Esta pregunta no tiene description");
+        }
         if (respuesta.getCarrera()==null){
             throw  new IncorrectResourceRequestException("No tiene carreras realcionadas");
         }
+
     }
 
 }

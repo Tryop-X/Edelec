@@ -18,7 +18,7 @@ public class Respuesta {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idRespuesta;
 
-    @Column(name = "contenidosRespuestas", nullable = false)
+    @Column(name = "contenidosRespuestas")
     private String contenidoRespuesta;
 
     @Column(name = "Selacionado")

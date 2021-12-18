@@ -11,6 +11,7 @@ import java.util.List;
 
 @Repository
 public interface PreguntaRepository extends JpaRepository<Pregunta, Integer> {
+
     @Query("SELECT p FROM  Pregunta p WHERE p.contenido=:contenido")
     Respuesta buscarUniversidad(@Param("contenido") String contennt);
 

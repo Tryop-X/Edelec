@@ -58,7 +58,7 @@ public class Usuario {
 
     @JsonIgnore
     @OneToMany(mappedBy = "user", cascade ={CascadeType.ALL})
-    private List<Comentario> coment;
+    private List<Comments> coment;
 
     @JsonIgnore
     @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, fetch = FetchType.LAZY)

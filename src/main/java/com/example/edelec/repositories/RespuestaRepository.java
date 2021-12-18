@@ -1,6 +1,5 @@
 package com.example.edelec.repositories;
 
-import com.example.edelec.entitys.Carrera;
 import com.example.edelec.entitys.Respuesta;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;

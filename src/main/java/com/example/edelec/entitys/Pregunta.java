@@ -18,7 +18,7 @@ public class Pregunta {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idPregunta;
 
-    @Column(name = "contenidos", nullable = false)
+    @Column(name = "contenidos")
     private String contenido;
 
     @JsonIgnore
@@ -26,7 +26,12 @@ public class Pregunta {
     @JoinColumn(name = "idTest",  foreignKey = @ForeignKey(name = "FK_Pregunta_Test"))
     private Test test;
 
+    @ManyToOne
+    @JsonIgnore
+    @JoinColumn(name = "idPlantilla",  foreignKey = @ForeignKey(name = "FK_Pregunta_Plantilla"))
+    private Plantilla plantilla;
 
-    @OneToMany(mappedBy = "pregunta", cascade = CascadeType.ALL)
+
+    @OneToMany(mappedBy = "pregunta", cascade = CascadeType.REMOVE)
     private List<Respuesta> respuesta;
 }
