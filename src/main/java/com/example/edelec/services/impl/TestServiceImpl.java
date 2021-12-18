@@ -69,7 +69,7 @@ public class TestServiceImpl implements TestService {
             Pregunta preguntaBase=preguntasBase.get(i);
             Pregunta pregunta=preguntas.get(i);
             pregunta.setContenido(preguntaBase.getContenido());
-            pregunta.setPlantilla(preguntaBase.getPlantilla());
+            pregunta.setPlantilla(null);
             pregunta.setTest(test1);
             Pregunta pregunta1=preguntaService.createPregunta(pregunta);
             for(int f = 0; f <pregunta.getRespuesta().size(); ++f){

@@ -18,7 +18,7 @@ public class Plantilla {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idPlantillas;
 
-    @JsonIgnore
+
     @Column(name = "activado")
     private Boolean activate;
 
