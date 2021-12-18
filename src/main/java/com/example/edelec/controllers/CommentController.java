@@ -39,6 +39,11 @@ public class CommentController {
         List<Comments> comments= commentService.listComments();
         return new ResponseEntity<>(comments, HttpStatus.OK);
     }
+      @PutMapping
+    public ResponseEntity<Comments> updateComment(@RequestBody Comments comment){
+        Comments commentUpdate=commentService.updateComment(comment);
+        return new ResponseEntity<>(commentUpdate, HttpStatus.OK);
+    }
   @DeleteMapping("/{id}")
     public ResponseEntity<Comments>  deleteComment(@PathVariable Integer id){
         Comments comments= commentService.deleteComment(id);
