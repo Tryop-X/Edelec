@@ -15,9 +15,6 @@ public class PreguntaValidator {
         if (pregunta.getTest()==null){
             throw new IncorrectResourceRequestException("Esta pregunta no tiene test");
         }
-        if (pregunta.getPlantilla()==null){
-            throw new IncorrectResourceRequestException("Esta pregunta no tiene una Plantilla");
-        }
     }
     public static void validateBase(Pregunta pregunta) {
         if (pregunta.getContenido() == null || pregunta.getContenido().trim().isEmpty()) {
