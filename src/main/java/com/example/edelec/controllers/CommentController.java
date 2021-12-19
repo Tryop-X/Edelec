@@ -39,5 +39,10 @@ public class CommentController {
         List<Comments> comments= commentService.listComments();
         return new ResponseEntity<>(comments, HttpStatus.OK);
     }
-
+    
+  @DeleteMapping("/{id}")
+    public ResponseEntity<Comments>  deleteComment(@PathVariable Integer id){
+        Comments comments= commentService.deleteComment(id);
+        return new ResponseEntity<>(comments, HttpStatus.OK);
+    }
 }

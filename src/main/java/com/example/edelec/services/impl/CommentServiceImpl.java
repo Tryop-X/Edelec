@@ -44,12 +44,17 @@ private final UniversidadRepository universidadRepository;
                    .orElse(new Comments());
            commentFromDb.setContenido(comment.getContenido());
            commentFromDb.setVotes(comment.getVotes());
-           commentFromDb.setTiempo(comment.getTiempo());
-           commentFromDb.setUser(comment.getUser());
-           commentFromDb.setUniversidad(comment.getUniversidad());
-           return commentRepository.save(comment);
+           commentFromDb.setTiempo(LocalDateTime.now());
+        Usuario usuario=usuarioRepository.findById(comment.getUser().getIdUsuario())
+                .orElseThrow(()-> new ResourceNotFoundException("No existe el Usuario"));
+        Universidad universidad =universidadRepository.findById(comment.getUniversidad().getIdUniversidad())
+                .orElseThrow(()-> new ResourceNotFoundException("No existe la universidad"));
+        commentFromDb.setUser(usuario);
+        commentFromDb.setUniversidad(universidad);
+           return commentRepository.save(commentFromDb);
 
     }
+    
 
     @Override
     public List<Comments> listComments() {
@@ -60,6 +65,13 @@ private final UniversidadRepository universidadRepository;
     public List<Comments> getCommentsByUniversidadId(Integer Id) {
         List<Comments> comments=commentRepository.findByUniversidadIdUniversidad(Id);
         return comments;
+    }
+    @Override
+    public Comments deleteComment(Integer id) {
+        Comments  commentFromDb =commentRepository.findById(id)
+                .orElseThrow(()-> new ResourceNotFoundException("No existe el comentario a borrar"));
+        commentRepository.deleteById(commentFromDb.getIdComentario());
+        return commentFromDb;
     }
 }
 
